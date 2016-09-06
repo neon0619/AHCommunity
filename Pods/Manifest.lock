@@ -1,0 +1,18 @@
+PODS:
+  - Eureka (1.7.0)
+  - SideMenuController (0.1.6)
+  - YouTubePlayer (0.3.0)
+
+DEPENDENCIES:
+  - Eureka (~> 1.7)
+  - SideMenuController (~> 0.1.5)
+  - YouTubePlayer
+
+SPEC CHECKSUMS:
+  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
+  SideMenuController: 442d67af6d5892934065d42d5c1c3b7d5be4953e
+  YouTubePlayer: 88713a96c356f2c88da8925eb61438eda88bcd57
+
+PODFILE CHECKSUM: d3e93d597961562e295588d3b185a50861df5e6a
+
+COCOAPODS: 1.0.0.beta.8

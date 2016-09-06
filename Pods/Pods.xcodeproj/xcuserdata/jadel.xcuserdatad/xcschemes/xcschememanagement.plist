@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-ActivehealthCommunity.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SideMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>YouTubePlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>426FE1E9B9E87E90B1AD31B55D3C5805</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4332352E97A37C729DC7D9B3B8A4BB15</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CE9B4DF82A05D796116760F4CE300863</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D5C4BA5C59D69367D708AFE9EFA4FA12</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

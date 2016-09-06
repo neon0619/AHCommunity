@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="LucidaGrande.ttc">
+            <string>LucidaGrande</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="headerCell" rowHeight="345" id="KGk-i7-Jjw" customClass="MenuHeaderCell" customModule="ActivehealthCommunity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="345"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="344"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder10" translatesAutoresizingMaskIntoConstraints="NO" id="DCj-tJ-xVz">
+                        <rect key="frame" x="80" y="58" width="160" height="160"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="DCj-tJ-xVz" secondAttribute="height" multiplier="1:1" id="bPx-Vh-wkw"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N49-qi-7NG">
+                        <rect key="frame" x="80" y="226" width="160" height="30"/>
+                        <state key="normal" title="Edit Your Profile"/>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx7-71-zTV">
+                        <rect key="frame" x="80" y="264" width="160" height="17"/>
+                        <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <fontDescription key="fontDescription" name="LucidaGrande" family="Lucida Grande" pointSize="17"/>
+                        </variation>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Rx7-71-zTV" firstAttribute="trailing" secondItem="DCj-tJ-xVz" secondAttribute="trailing" id="Eo4-td-vMn"/>
+                    <constraint firstItem="DCj-tJ-xVz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="50" id="MfU-vD-LgI"/>
+                    <constraint firstItem="Rx7-71-zTV" firstAttribute="top" secondItem="N49-qi-7NG" secondAttribute="bottom" constant="8" id="eTM-0c-xzV"/>
+                    <constraint firstItem="DCj-tJ-xVz" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="0.5" id="hxG-ny-ZZc"/>
+                    <constraint firstItem="N49-qi-7NG" firstAttribute="leading" secondItem="DCj-tJ-xVz" secondAttribute="leading" id="jhY-4p-rGO"/>
+                    <constraint firstItem="N49-qi-7NG" firstAttribute="top" secondItem="DCj-tJ-xVz" secondAttribute="bottom" constant="8" id="k6S-a1-aix"/>
+                    <constraint firstItem="N49-qi-7NG" firstAttribute="trailing" secondItem="DCj-tJ-xVz" secondAttribute="trailing" id="o8b-gn-atV"/>
+                    <constraint firstItem="Rx7-71-zTV" firstAttribute="leading" secondItem="DCj-tJ-xVz" secondAttribute="leading" id="yHc-31-Sp8"/>
+                    <constraint firstItem="DCj-tJ-xVz" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="zLh-WN-IGh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="editProfile" destination="N49-qi-7NG" id="qF6-qa-ysB"/>
+                <outlet property="userImage" destination="DCj-tJ-xVz" id="rhB-Uo-i0m"/>
+                <outlet property="userName" destination="Rx7-71-zTV" id="Xjw-0P-MiV"/>
+            </connections>
+            <point key="canvasLocation" x="363" y="286.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder10" width="225" height="225"/>
+    </resources>
+</document>

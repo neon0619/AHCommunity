@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CoachHeaderCell" customModule="ActivehealthCommunity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder7" translatesAutoresizingMaskIntoConstraints="NO" id="6YK-qY-FQt">
+                    <rect key="frame" x="0.0" y="0.0" width="400" height="250"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CX-Xj-cWj">
+                    <rect key="frame" x="8" y="192" width="384" height="50"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wDY-uD-8DJ">
+                            <rect key="frame" x="32" y="5" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bio_icon" translatesAutoresizingMaskIntoConstraints="NO" id="LMD-GT-TE1">
+                            <rect key="frame" x="102" y="5" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="classes_icon" translatesAutoresizingMaskIntoConstraints="NO" id="dmz-au-zsl">
+                            <rect key="frame" x="172" y="5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="1OK-5g-BmE"/>
+                                <constraint firstAttribute="width" constant="40" id="Q5Y-Pk-FZg"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="featured_videos_icon" translatesAutoresizingMaskIntoConstraints="NO" id="wAS-tJ-1GL">
+                            <rect key="frame" x="312" y="5" width="40" height="40"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="featured_stories_icon" translatesAutoresizingMaskIntoConstraints="NO" id="1Qq-ky-r0s">
+                            <rect key="frame" x="242" y="5" width="40" height="40"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="dmz-au-zsl" firstAttribute="centerX" secondItem="3CX-Xj-cWj" secondAttribute="centerX" id="17f-HI-baz"/>
+                        <constraint firstItem="1Qq-ky-r0s" firstAttribute="leading" secondItem="dmz-au-zsl" secondAttribute="trailing" constant="30" id="1PI-BX-b2B"/>
+                        <constraint firstItem="1Qq-ky-r0s" firstAttribute="height" secondItem="dmz-au-zsl" secondAttribute="height" id="1Ra-mn-EeT"/>
+                        <constraint firstItem="wDY-uD-8DJ" firstAttribute="centerY" secondItem="dmz-au-zsl" secondAttribute="centerY" id="Btd-UT-3er"/>
+                        <constraint firstItem="LMD-GT-TE1" firstAttribute="centerY" secondItem="dmz-au-zsl" secondAttribute="centerY" id="H9z-cd-nul"/>
+                        <constraint firstItem="1Qq-ky-r0s" firstAttribute="centerY" secondItem="dmz-au-zsl" secondAttribute="centerY" id="K36-ig-Bgq"/>
+                        <constraint firstItem="wAS-tJ-1GL" firstAttribute="height" secondItem="dmz-au-zsl" secondAttribute="height" id="O9g-Sy-5pV"/>
+                        <constraint firstItem="LMD-GT-TE1" firstAttribute="width" secondItem="dmz-au-zsl" secondAttribute="width" id="Q3Q-qk-s6j"/>
+                        <constraint firstItem="wDY-uD-8DJ" firstAttribute="height" secondItem="dmz-au-zsl" secondAttribute="height" id="WI2-aQ-b6Y"/>
+                        <constraint firstItem="dmz-au-zsl" firstAttribute="leading" secondItem="LMD-GT-TE1" secondAttribute="trailing" constant="30" id="Z1R-y3-mNh"/>
+                        <constraint firstItem="dmz-au-zsl" firstAttribute="centerY" secondItem="3CX-Xj-cWj" secondAttribute="centerY" id="azx-gM-sFt"/>
+                        <constraint firstItem="1Qq-ky-r0s" firstAttribute="width" secondItem="dmz-au-zsl" secondAttribute="width" id="c5J-5I-gQz"/>
+                        <constraint firstItem="wAS-tJ-1GL" firstAttribute="leading" secondItem="1Qq-ky-r0s" secondAttribute="trailing" constant="30" id="fgK-FE-Vtm"/>
+                        <constraint firstItem="wAS-tJ-1GL" firstAttribute="width" secondItem="dmz-au-zsl" secondAttribute="width" id="hoa-jl-l3x"/>
+                        <constraint firstItem="wAS-tJ-1GL" firstAttribute="centerY" secondItem="dmz-au-zsl" secondAttribute="centerY" id="l0Z-oJ-WxL"/>
+                        <constraint firstItem="wDY-uD-8DJ" firstAttribute="width" secondItem="dmz-au-zsl" secondAttribute="width" id="muS-go-Huc"/>
+                        <constraint firstItem="LMD-GT-TE1" firstAttribute="leading" secondItem="wDY-uD-8DJ" secondAttribute="trailing" constant="30" id="q1z-y0-eRb"/>
+                        <constraint firstAttribute="height" constant="50" id="r3C-nL-TBP"/>
+                        <constraint firstItem="LMD-GT-TE1" firstAttribute="height" secondItem="dmz-au-zsl" secondAttribute="height" id="vw0-eS-n72"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="6YK-qY-FQt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6d5-gD-OYJ"/>
+                <constraint firstAttribute="trailing" secondItem="3CX-Xj-cWj" secondAttribute="trailing" constant="8" id="9yL-Qc-ZXb"/>
+                <constraint firstItem="3CX-Xj-cWj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Vj9-HI-qdX"/>
+                <constraint firstAttribute="bottom" secondItem="6YK-qY-FQt" secondAttribute="bottom" id="c0m-qV-ztQ"/>
+                <constraint firstItem="6YK-qY-FQt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ca3-Kf-nbm"/>
+                <constraint firstAttribute="bottom" secondItem="3CX-Xj-cWj" secondAttribute="bottom" constant="8" id="efB-3V-KCa"/>
+                <constraint firstAttribute="trailing" secondItem="6YK-qY-FQt" secondAttribute="trailing" id="jWs-iM-bGY"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconBio" destination="LMD-GT-TE1" id="0AB-KA-nVG"/>
+                <outlet property="iconClasses" destination="dmz-au-zsl" id="60B-C9-pXj"/>
+                <outlet property="iconDetails" destination="wDY-uD-8DJ" id="O6o-ID-GCi"/>
+                <outlet property="iconStories" destination="1Qq-ky-r0s" id="QGr-BJ-rYI"/>
+                <outlet property="iconVideos" destination="wAS-tJ-1GL" id="ek3-DV-A58"/>
+                <outlet property="imageCoach" destination="6YK-qY-FQt" id="JmD-i4-MGl"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="bio_icon" width="512" height="512"/>
+        <image name="classes_icon" width="512" height="512"/>
+        <image name="featured_stories_icon" width="512" height="512"/>
+        <image name="featured_videos_icon" width="512" height="512"/>
+        <image name="placeholder7" width="630" height="420"/>
+        <image name="profile_icon" width="512" height="512"/>
+    </resources>
+</document>
