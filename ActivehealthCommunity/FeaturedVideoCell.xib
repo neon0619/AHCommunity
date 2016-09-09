@@ -21,24 +21,24 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spA-8m-iwH" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="138"/>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cok-PB-Ypw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                    </webView>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottomMargin" secondItem="Eff-l6-eBy" secondAttribute="bottom" constant="7" id="1NK-g7-YHi"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="spA-8m-iwH" secondAttribute="trailing" constant="-8" id="4sT-ym-wUZ"/>
-                    <constraint firstItem="Eff-l6-eBy" firstAttribute="top" secondItem="spA-8m-iwH" secondAttribute="bottom" constant="16" id="CYZ-Ro-TOx"/>
-                    <constraint firstItem="spA-8m-iwH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="IPs-NT-vIe"/>
                     <constraint firstItem="Eff-l6-eBy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="L1g-vs-NVW"/>
+                    <constraint firstItem="Cok-PB-Ypw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="M5w-QO-Y8t"/>
+                    <constraint firstItem="Eff-l6-eBy" firstAttribute="top" secondItem="Cok-PB-Ypw" secondAttribute="bottom" constant="15" id="eiG-b5-6VX"/>
+                    <constraint firstItem="Cok-PB-Ypw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="iY9-yr-nwo"/>
                     <constraint firstItem="Eff-l6-eBy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="qJW-Eo-vpo"/>
-                    <constraint firstItem="spA-8m-iwH" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="-8" id="zNM-Os-zn9"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Cok-PB-Ypw" secondAttribute="trailing" constant="-8" id="sJq-sA-2HA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="lblDesc" destination="Eff-l6-eBy" id="uif-ap-6nS"/>
-                <outlet property="playerView" destination="spA-8m-iwH" id="qAB-yz-dfM"/>
+                <outlet property="videoPlayer" destination="Cok-PB-Ypw" id="Vn3-FB-39q"/>
             </connections>
             <point key="canvasLocation" x="388" y="260.5"/>
         </tableViewCell>

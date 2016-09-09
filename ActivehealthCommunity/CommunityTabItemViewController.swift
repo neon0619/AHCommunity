@@ -7,20 +7,261 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
+import SwiftyJSON
 
-class CommunityTabItemViewController: UIViewController {
-
-
+class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
+    
+    
     @IBOutlet var yellowView: UIView!
+    @IBOutlet var lblCurrentLocation: UILabel!
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var lblTemperature: UILabel!
+    
+    let geocoder = CLGeocoder()
+    let locationManager = CLLocationManager()
+    let locationNames: Array<MapAnnotations> = [
+        MapAnnotations(name: "Athlete 1",status: "Resting",coordinate: CLLocationCoordinate2D(latitude: 14.5831, longitude: 120.9794)),
+        MapAnnotations(name: "Athlete 2",status: "Running",coordinate: CLLocationCoordinate2D(latitude: 14.5793, longitude: 120.9724)),
+        MapAnnotations(name: "Athlete 2",status: "Running",coordinate: CLLocationCoordinate2D(latitude: 14.5989, longitude: 120.9838))]
+    
+    
+    let baseURL = "http://api.openweathermap.org/data/2.5/weather?"
+    let API_KEY = "c75f14d1b5aa76feb7e0ac0fd4571602"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        mapView.delegate = self
+        
+        initLocationManager()
+        
+        
+        for location in locationNames {
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = location.coordinate
+            annotation.title = location.status
+            annotation.subtitle = location.name
+            
+            mapView.addAnnotation(annotation)
+        }
+        
+        
+//        centerMapOnLocation(locationManager.location!)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
         
-          }
+//        let currentLocation = getCurrentLatLong()
+       
 
-   
+    }
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        print("update")
+        let location = locations.last!
+        
+        getWeatherData(location.coordinate.latitude, long:location.coordinate.longitude)
+        
+        let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+        
+        
+        self.mapView.setRegion(region, animated: true)
+        locationManager.stopUpdatingLocation()
+    }
+    
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        
+        // Don't want to show a custom image if the annotation is the user's location.
+        guard !annotation.isKindOfClass(MKUserLocation) else {
+            return nil
+        }
+        
+        let annotationIdentifier = "pin"
+        
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            av.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            annotationView = av
+        }
+        
+        if let annotationView = annotationView {
+            // Configure your annotation view here
+            annotationView.canShowCallout = true
+            var image = UIImage()
+            let status = annotation.title as! AnyObject as! String
+            
+            switch status {
+            case "Resting":
+                
+                image = UIImage(named: "sleep_icon")!
+                break;
+            case "Swimming":
+                
+                image = UIImage(named: "training_icon")!
+                break;
+            case "Running":
+                
+                image = UIImage(named: "nutrition_icon")!
+                break;
+            default:
+                
+                break;
+            }
+            
+            
+            annotationView.image = image
+        }
+        
+        return annotationView
+    }
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("hm")
+        switch status {
+        case .NotDetermined:
+            locationManager.requestAlwaysAuthorization()
+            break
+        case .AuthorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+            self.mapView.showsUserLocation = true
+            break
+        case .AuthorizedAlways:
+            locationManager.startUpdatingLocation()
+            self.mapView.showsUserLocation = true
+            break
+        case .Restricted:
+            // restricted by e.g. parental controls. User can't enable Location Services
+            break
+        case .Denied:
+            // user denied your app access to Location Services, but can grant access from Settings.app
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    func centerMapOnLocation(location: CLLocation) {
+        
+        let regionRadius: CLLocationDistance = 1000
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    func initLocationManager(){
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                self.mapView.showsUserLocation = true
+                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+                print("location!!!! \(locationManager.location)")
+            
+            
+        }
+    }
+    func getCurrentLatLong() -> CLLocation {
+        
+        if CLLocationManager.locationServicesEnabled() {
+            
+            if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+                locationManager.requestWhenInUseAuthorization()
+            }else{
+                
+                locationManager.delegate = self
+                locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                //                locationManager.requestAlwaysAuthorization()
+                locationManager.startUpdatingLocation()
+            }
+            
+        }
+        
+        
+        return locationManager.location!
+    }
+    
+    func getAddressFromCllocation(currentLocation: CLLocation){
+        
+        geocoder.reverseGeocodeLocation(currentLocation) { (placemark, error) in
+            
+            
+            if error == nil && placemark?.count > 0 {
+                
+                let placemark = placemark?.last
+                self.lblCurrentLocation.text = "\(placemark!.locality!)"
+                print("place \(placemark!.thoroughfare) \(placemark!.locality) \(placemark?.country) \(placemark?.postalCode)")
+                //                self.locationManager.stopUpdatingLocation()
+            }
+            
+        }
+        
+        
+    }
+    
+    func getWeatherData(lat: Double, long: Double){
+        
+        // This is a pretty simple networking task, so the shared session will do.
+        let session = NSURLSession.sharedSession()
+        
+        let weatherRequestURL = NSURL(string: "\(baseURL)lat=\(lat)&lon=\(long)&APPID=\(API_KEY)")!
+        
+        // The data task retrieves the data.
+        let dataTask = session.dataTaskWithURL(weatherRequestURL) {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) in
+            if let error = error {
+                // Case 1: Error
+                // We got some kind of error while trying to get data from the server.
+                print("Error:\n\(error)")
+            }
+            else {
+                // Case 2: Success
+                // We got a response from the server!
+                
+                let dataString = String(data: data!, encoding: NSUTF8StringEncoding)
+//                print("Data:\n\(dataString!)")
+                let json = JSON(data:data!)
+                let temp = json["main"]["temp"].double
+                let locationName = json["name"].string
+                self.updateWeatherAndLocation(locationName!, temp: temp!)
+                print("wahahaha \(temp) \(locationName)")
+                
+            }
+        }
+        
+        // The data task is set up...launch it!
+        dataTask.resume()
+        
+    }
+    
+    func updateWeatherAndLocation(location: String, temp: Double) {
+        
+        let celsius = temp - 273.15
+        
+        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+            
+            self.lblTemperature.text = "\(celsius)°"
+            self.lblCurrentLocation.text = location
+        }
+        
+        
+    }
+    
+    
+    
 }

@@ -23,6 +23,7 @@ public class SwiftPages: UIView {
     
     private var token: dispatch_once_t = 0
     
+ 
     // Items variables
     private var containerView: UIView!
     private var scrollView: UIScrollView!
@@ -52,7 +53,7 @@ public class SwiftPages: UIView {
     private var containerViewBackground = UIColor.whiteColor()
     
     // Item size variables
-    private var topBarHeight: CGFloat = 52
+    private var topBarHeight: CGFloat = 200
     private var animatedBarHeight: CGFloat = 3
     
     // Bar item variables
@@ -104,6 +105,7 @@ public class SwiftPages: UIView {
             self.containerView.backgroundColor = self.containerViewBackground
             self.containerView.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(self.containerView)
+            self.sendSubviewToBack(self.containerView)
             
             //Add the constraints to the containerView.
             if #available(iOS 9.0, *) {
@@ -231,7 +233,7 @@ public class SwiftPages: UIView {
             self.loadVisiblePages()
             
             // Do the initial alignment of the subViews
-            self.alignSubviews()
+//            self.alignSubviews()
         }
     }
     
@@ -334,7 +336,7 @@ public class SwiftPages: UIView {
     public func loadVisiblePages() {
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
+        let page = Int(floor((scrollView.contentOffset.x * 3.0 + pageWidth) / (pageWidth * 3.0)))
         
         // make sure the delegate method called once
         if currentIndex != page {
@@ -348,7 +350,9 @@ public class SwiftPages: UIView {
         
         // Load pages in our range
         for index in firstPage...lastPage {
+
             loadPage(index)
+            alignSubviews()
         }
     }
     
@@ -377,15 +381,18 @@ public class SwiftPages: UIView {
         
         // Set the new frame of the scrollview contents
         for (index, controller) in pageViews.enumerate() {
-            controller?.view.frame = CGRect(x: CGFloat(index) * scrollView.bounds.size.width, y: 0, width: scrollView.bounds.size.width, height: scrollView.bounds.size.height)
+            controller?.view.frame = CGRect(x: CGFloat(index) * scrollView.bounds.size.width, y: self.topBarHeight , width: scrollView.bounds.size.width, height: scrollView.bounds.size.height - self.topBarHeight)
         }
         
         // Set the new frame for the top bar buttons
         var buttonsXPosition: CGFloat = 0
         for button in barButtons {
-            button?.frame = CGRect(x: buttonsXPosition, y: 0, width: containerView.frame.size.width / CGFloat(pageCount), height: topBarHeight)
+            button?.frame = CGRect(x: buttonsXPosition, y: self.topBar.frame.maxY - 35, width: containerView.frame.size.width / CGFloat(pageCount), height: 30)
             buttonsXPosition += containerView.frame.size.width / CGFloat(pageCount)
         }
+        
+        
+
     }
     
     func applicationWillEnterBackground() {

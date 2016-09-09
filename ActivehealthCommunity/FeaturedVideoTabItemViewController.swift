@@ -14,11 +14,12 @@ class FeaturedVideoTabItemViewController: UIViewController, UITableViewDelegate,
     @IBOutlet var tableView: UITableView!
     
     let ytLinks: Array<Video> = [
-        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/watch?v=-AGogYAB-Mg"),
-        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/watch?v=XBSnsrHc4NU"),
-        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/watch?v=l4vhazet4oo")
+        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/embed/NU9JoFKlaZ0"),
+        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/embed/s1tAYmMjLdY"),
+        Video(description: "penatibus et magnis dis parturient montes", ytLink: "https://www.youtube.com/embed/s1tAYmMjLdY")
     ]
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -39,11 +40,12 @@ class FeaturedVideoTabItemViewController: UIViewController, UITableViewDelegate,
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("featuredVideoCell", forIndexPath: indexPath) as! FeaturedVideoCell
-        let url = NSURL(string: ytLinks[indexPath.row].ytLink! )
+        let urlString = ytLinks[indexPath.row].ytLink!
+        let urlWithSettings = "<iframe width=\"\(cell.frame.width)\" height=\"\(cell.frame.height - 50)\" src=\"\(urlString)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>"
         
         cell.lblDesc.text = ytLinks[indexPath.row].description
-        cell.playerView.loadVideoURL(url!)
-        
+        cell.videoPlayer.allowsInlineMediaPlayback = true
+        cell.videoPlayer.loadHTMLString(urlWithSettings, baseURL: nil)
         
         return cell
     }

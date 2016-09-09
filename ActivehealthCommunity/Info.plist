@@ -19,9 +19,18 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need to know where you are!</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>ActiveHealth would like to access your location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>LucidaGrande.ttc</string>

@@ -7,6 +7,7 @@ target 'ActivehealthCommunity' do
 pod 'SideMenuController', '~> 0.1.5'
 pod 'YouTubePlayer'
 pod 'Eureka', '~> 1.7'
+pod 'SwiftyJSON'
 
 end
 

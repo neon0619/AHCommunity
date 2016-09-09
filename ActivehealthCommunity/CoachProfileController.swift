@@ -21,6 +21,11 @@ class CoachProfileController : UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         
         loadNibs()
+        
+        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.translucent = true
+
         // Do any additional setup after loading the view.
     }
     

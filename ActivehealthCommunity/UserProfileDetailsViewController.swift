@@ -13,20 +13,8 @@ class UserProfileDetailsViewController: FormViewController  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("ha!")
         form +++
-            Section()              { section in
-                var header = HeaderFooterView<ProfileHeaderView>(HeaderFooterProvider.NibFile(name: "ProfileHeaderView", bundle: nil))
-                header.height = {50}
-                
-                header.onSetupView = { view, _ in
-                                        view.backgroundColor = UIColor.clearColor()
-                }
-                section.header = header
-            }
-
-            
-            +++ Section("Currently")
+            Section("Currently")
             
             <<< TextRow(){
                 

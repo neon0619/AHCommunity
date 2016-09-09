@@ -47,6 +47,12 @@
 		B7A4D7F41D77F31400816D13 /* UserProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */; };
 		B7A4D7FC1D78162000816D13 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7FB1D78162000816D13 /* ProfileHeaderView.swift */; };
 		B7A4D7FE1D78162F00816D13 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A4D7FD1D78162F00816D13 /* ProfileHeaderView.xib */; };
+		B7A4D8021D7FA11500816D13 /* MyPreviousRacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D8011D7FA11300816D13 /* MyPreviousRacesViewController.swift */; };
+		B7A4D8071D7FA27900816D13 /* MyPreviousRacesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D8061D7FA27900816D13 /* MyPreviousRacesCell.swift */; };
+		B7A4D80A1D7FA5DB00816D13 /* MyUpcomingRaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D8091D7FA5DB00816D13 /* MyUpcomingRaceCell.swift */; };
+		B7A4D80C1D7FA62900816D13 /* MyUpcomingRacellCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A4D80B1D7FA62900816D13 /* MyUpcomingRacellCell.xib */; };
+		B7A4D80F1D7FB08C00816D13 /* UpcomingRacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D80E1D7FB08C00816D13 /* UpcomingRacesViewController.swift */; };
+		B7A4D8111D7FDB7E00816D13 /* MapAnnotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D8101D7FDB7E00816D13 /* MapAnnotations.swift */; };
 		B7D511A71D6D391C00219D6E /* AhcMentorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D511A61D6D391C00219D6E /* AhcMentorsViewController.swift */; };
 		B7D511A91D6D3B2900219D6E /* MentorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D511A81D6D3B2900219D6E /* MentorsViewController.swift */; };
 		B7D511AC1D6D417500219D6E /* MyRacePrepPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D511AB1D6D417500219D6E /* MyRacePrepPlanViewController.swift */; };
@@ -142,6 +148,12 @@
 		B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		B7A4D7FB1D78162000816D13 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		B7A4D7FD1D78162F00816D13 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
+		B7A4D8011D7FA11300816D13 /* MyPreviousRacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPreviousRacesViewController.swift; sourceTree = "<group>"; };
+		B7A4D8061D7FA27900816D13 /* MyPreviousRacesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPreviousRacesCell.swift; sourceTree = "<group>"; };
+		B7A4D8091D7FA5DB00816D13 /* MyUpcomingRaceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUpcomingRaceCell.swift; sourceTree = "<group>"; };
+		B7A4D80B1D7FA62900816D13 /* MyUpcomingRacellCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyUpcomingRacellCell.xib; sourceTree = "<group>"; };
+		B7A4D80E1D7FB08C00816D13 /* UpcomingRacesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpcomingRacesViewController.swift; sourceTree = "<group>"; };
+		B7A4D8101D7FDB7E00816D13 /* MapAnnotations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAnnotations.swift; sourceTree = "<group>"; };
 		B7D511A61D6D391C00219D6E /* AhcMentorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AhcMentorsViewController.swift; sourceTree = "<group>"; };
 		B7D511A81D6D3B2900219D6E /* MentorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorsViewController.swift; sourceTree = "<group>"; };
 		B7D511AB1D6D417500219D6E /* MyRacePrepPlanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyRacePrepPlanViewController.swift; sourceTree = "<group>"; };
@@ -386,6 +398,7 @@
 		B7998FAF1D48464000064B8F /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				B7A4D8081D7FA43300816D13 /* Previous/UpcomingRacesXib */,
 				B7D511AF1D6D45B100219D6E /* RacePlanXib */,
 				B7347B4B1D6ABBAB00250B26 /* Team/Coaches/MentorsXib */,
 				B7F9F65E1D59740D00E04AED /* TabCellsXib */,
@@ -397,7 +410,7 @@
 		B7998FB01D48464800064B8F /* MenuCellXib */ = {
 			isa = PBXGroup;
 			children = (
-				B7A4D7FA1D78160100816D13 /* New Group */,
+				B7A4D7FA1D78160100816D13 /* ProfileHeader */,
 				B7998FB11D48467800064B8F /* MenuCell.swift */,
 				B7998FB31D48470400064B8F /* MenuCell.xib */,
 				B7DB71FA1D4EE8C300A4D3CF /* MenuHeaderCell.swift */,
@@ -427,19 +440,55 @@
 		B7A4D7EF1D77E8FD00816D13 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				B7A4D80D1D7FB07500816D13 /* UpcomingRace */,
+				B7A4D8041D7FA1E600816D13 /* MyPreviousRace */,
+				B7A4D8031D7FA1D300816D13 /* UserProfile */,
 				B7A4D7EA1D77E75A00816D13 /* ProfileViewController.swift */,
-				B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
 		};
-		B7A4D7FA1D78160100816D13 /* New Group */ = {
+		B7A4D7FA1D78160100816D13 /* ProfileHeader */ = {
 			isa = PBXGroup;
 			children = (
 				B7A4D7FB1D78162000816D13 /* ProfileHeaderView.swift */,
 				B7A4D7FD1D78162F00816D13 /* ProfileHeaderView.xib */,
 			);
-			name = "New Group";
+			name = ProfileHeader;
+			sourceTree = "<group>";
+		};
+		B7A4D8031D7FA1D300816D13 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */,
+			);
+			name = UserProfile;
+			sourceTree = "<group>";
+		};
+		B7A4D8041D7FA1E600816D13 /* MyPreviousRace */ = {
+			isa = PBXGroup;
+			children = (
+				B7A4D8011D7FA11300816D13 /* MyPreviousRacesViewController.swift */,
+				B7A4D8061D7FA27900816D13 /* MyPreviousRacesCell.swift */,
+			);
+			name = MyPreviousRace;
+			sourceTree = "<group>";
+		};
+		B7A4D8081D7FA43300816D13 /* Previous/UpcomingRacesXib */ = {
+			isa = PBXGroup;
+			children = (
+				B7A4D8091D7FA5DB00816D13 /* MyUpcomingRaceCell.swift */,
+				B7A4D80B1D7FA62900816D13 /* MyUpcomingRacellCell.xib */,
+			);
+			name = Previous/UpcomingRacesXib;
+			sourceTree = "<group>";
+		};
+		B7A4D80D1D7FB07500816D13 /* UpcomingRace */ = {
+			isa = PBXGroup;
+			children = (
+				B7A4D80E1D7FB08C00816D13 /* UpcomingRacesViewController.swift */,
+			);
+			name = UpcomingRace;
 			sourceTree = "<group>";
 		};
 		B7D511A51D6D383600219D6E /* AhcMentors */ = {
@@ -609,6 +658,7 @@
 				B7347B871D6D278300250B26 /* ProfileDetails.swift */,
 				B7D511DC1D6D831A00219D6E /* Sports.swift */,
 				B7A4D7DC1D76AB5200816D13 /* Video.swift */,
+				B7A4D8101D7FDB7E00816D13 /* MapAnnotations.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -692,6 +742,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B7A4D80C1D7FA62900816D13 /* MyUpcomingRacellCell.xib in Resources */,
 				B7347B861D6D23A700250B26 /* ProfileDetailsCell.xib in Resources */,
 				B7D511B31D6D45FC00219D6E /* RacePlanCell.xib in Resources */,
 				B7F9F6631D597DA800E04AED /* ClassesCell.xib in Resources */,
@@ -773,6 +824,7 @@
 				B7D511D71D6D822300219D6E /* StatusViewController.swift in Sources */,
 				B7DB722B1D54609F00A4D3CF /* AhcTeamViewController.swift in Sources */,
 				B7DB71FF1D4F073300A4D3CF /* AhcPointsViewController.swift in Sources */,
+				B7A4D8111D7FDB7E00816D13 /* MapAnnotations.swift in Sources */,
 				B7D511B91D6D58AB00219D6E /* RacePlanHeaderCellTableViewCell.swift in Sources */,
 				B7998FAA1D47473D00064B8F /* MainNavigationController.swift in Sources */,
 				B7D511B11D6D45E600219D6E /* RacePlanCell.swift in Sources */,
@@ -787,6 +839,7 @@
 				B7F9F6601D597D8100E04AED /* ClassesCell.swift in Sources */,
 				B7A4D7ED1D77E82300816D13 /* HeaderView.swift in Sources */,
 				B7DB72131D51B55800A4D3CF /* FeaturedStoryTabItemViewController.swift in Sources */,
+				B7A4D80F1D7FB08C00816D13 /* UpcomingRacesViewController.swift in Sources */,
 				B7D511C61D6D661F00219D6E /* TrainingViewController.swift in Sources */,
 				B7F9F66A1D5BFFCF00E04AED /* Classes.swift in Sources */,
 				B7F9F6661D5983BE00E04AED /* FeaturedStoryCell.swift in Sources */,
@@ -800,11 +853,13 @@
 				B7998FAE1D4844F700064B8F /* MenuViewController.swift in Sources */,
 				B7347B6B1D6C25EA00250B26 /* AhcTeamLeaderCell.swift in Sources */,
 				B7D511A91D6D3B2900219D6E /* MentorsViewController.swift in Sources */,
+				B7A4D8021D7FA11500816D13 /* MyPreviousRacesViewController.swift in Sources */,
 				B7347B7C1D6D1D8400250B26 /* AhcCoachesViewController.swift in Sources */,
 				B7DB72151D51B56600A4D3CF /* FeaturedVideoTabItemViewController.swift in Sources */,
 				B7998F8F1D46FB4900064B8F /* AppDelegate.swift in Sources */,
 				B7998FA81D47435000064B8F /* MainViewController.swift in Sources */,
 				B7347B731D6C2A3D00250B26 /* AhcTeamDescriptionCell.swift in Sources */,
+				B7A4D80A1D7FA5DB00816D13 /* MyUpcomingRaceCell.swift in Sources */,
 				B7D511CC1D6D702100219D6E /* InboxCell.swift in Sources */,
 				B7D511D91D6D826B00219D6E /* StatusCell.swift in Sources */,
 				B7D511AE1D6D429C00219D6E /* RacePrepPlanCell.swift in Sources */,
@@ -821,6 +876,7 @@
 				B7347B511D6ABD3A00250B26 /* AhcCell.swift in Sources */,
 				B7347B821D6D236000250B26 /* ProfileDetailsCell.swift in Sources */,
 				B7DB72111D51B54800A4D3CF /* ClassesTabItemViewController.swift in Sources */,
+				B7A4D8071D7FA27900816D13 /* MyPreviousRacesCell.swift in Sources */,
 				B7A4D7DD1D76AB5200816D13 /* Video.swift in Sources */,
 				B7DB721E1D52F4A800A4D3CF /* Options.swift in Sources */,
 				B7DB71FC1D4EE8C300A4D3CF /* MenuHeaderCell.swift in Sources */,
@@ -952,13 +1008,13 @@
 			baseConfigurationReference = A2C8487571AE4E85AC952336 /* Pods-ActivehealthCommunity.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ActivehealthCommunity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29d1fdf6-1480-4539-bbdf-9defa7a30efd";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -968,13 +1024,13 @@
 			baseConfigurationReference = 27D713FDCF563D6023148027 /* Pods-ActivehealthCommunity.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ActivehealthCommunity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29d1fdf6-1480-4539-bbdf-9defa7a30efd";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

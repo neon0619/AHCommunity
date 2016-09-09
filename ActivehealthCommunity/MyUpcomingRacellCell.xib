@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myUpcomingRaceCell" rowHeight="320" id="uXK-fE-dvB" customClass="MyUpcomingRaceCell" customModule="ActivehealthCommunity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uXK-fE-dvB" id="p0D-fh-iYP">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="366"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="S0A-4C-5r7">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="184"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="184" id="RhA-LX-HAg"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RUN UNITED PHILLIPINES MARATHON 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCq-SY-596">
+                        <rect key="frame" x="8" y="188" width="304" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MALL OF ASIA" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbw-o0-eOy">
+                        <rect key="frame" x="8" y="205" width="304" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="October 02, 2016" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eia-lK-Ht6">
+                        <rect key="frame" x="8" y="222" width="304" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 KM RUN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQM-ql-PPs">
+                        <rect key="frame" x="8" y="239" width="304" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqi-uz-hW6">
+                        <rect key="frame" x="0.0" y="336" width="320" height="22"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2016RUST03-5KM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pu4-E6-62W">
+                                <rect key="frame" x="8" y="4" width="304" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15686274510000001" green="0.20784313730000001" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="22" id="qwI-K1-rRk"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Nqi-uz-hW6" firstAttribute="bottom" secondItem="p0D-fh-iYP" secondAttribute="bottomMargin" id="0MW-2f-qfZ"/>
+                    <constraint firstItem="rQM-ql-PPs" firstAttribute="top" secondItem="eia-lK-Ht6" secondAttribute="bottom" id="3L1-ZK-S2D"/>
+                    <constraint firstItem="rQM-ql-PPs" firstAttribute="trailing" secondItem="eia-lK-Ht6" secondAttribute="trailing" id="BG5-rS-t1l"/>
+                    <constraint firstItem="eia-lK-Ht6" firstAttribute="leading" secondItem="rbw-o0-eOy" secondAttribute="leading" id="Do7-XX-WLv"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Nqi-uz-hW6" secondAttribute="trailing" constant="-8" id="HH3-US-hpm"/>
+                    <constraint firstItem="S0A-4C-5r7" firstAttribute="top" secondItem="p0D-fh-iYP" secondAttribute="topMargin" constant="-8" id="Myn-er-I3d"/>
+                    <constraint firstItem="rbw-o0-eOy" firstAttribute="trailing" secondItem="hCq-SY-596" secondAttribute="trailing" id="Y53-E8-qiC"/>
+                    <constraint firstItem="eia-lK-Ht6" firstAttribute="trailing" secondItem="rbw-o0-eOy" secondAttribute="trailing" id="Ydf-7a-3R9"/>
+                    <constraint firstItem="S0A-4C-5r7" firstAttribute="leading" secondItem="p0D-fh-iYP" secondAttribute="leadingMargin" constant="-8" id="ZUQ-18-366"/>
+                    <constraint firstItem="hCq-SY-596" firstAttribute="leading" secondItem="p0D-fh-iYP" secondAttribute="leadingMargin" id="ZgU-3S-sJo"/>
+                    <constraint firstItem="rbw-o0-eOy" firstAttribute="top" secondItem="hCq-SY-596" secondAttribute="bottom" id="ezH-qG-WLe"/>
+                    <constraint firstItem="Nqi-uz-hW6" firstAttribute="leading" secondItem="p0D-fh-iYP" secondAttribute="leadingMargin" constant="-8" id="goR-9C-53q"/>
+                    <constraint firstItem="hCq-SY-596" firstAttribute="trailing" secondItem="p0D-fh-iYP" secondAttribute="trailingMargin" id="hdJ-br-3Og"/>
+                    <constraint firstItem="rbw-o0-eOy" firstAttribute="leading" secondItem="hCq-SY-596" secondAttribute="leading" id="jNR-cZ-xtn"/>
+                    <constraint firstItem="hCq-SY-596" firstAttribute="top" secondItem="S0A-4C-5r7" secondAttribute="bottom" constant="4" id="qvG-xB-jh8"/>
+                    <constraint firstItem="rQM-ql-PPs" firstAttribute="leading" secondItem="eia-lK-Ht6" secondAttribute="leading" id="tYz-UE-k8Y"/>
+                    <constraint firstItem="eia-lK-Ht6" firstAttribute="top" secondItem="rbw-o0-eOy" secondAttribute="bottom" id="vjU-qx-tIW"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="S0A-4C-5r7" secondAttribute="trailing" constant="-8" id="y5T-2Q-V8k"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="379" y="328.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="3347" height="1902"/>
+    </resources>
+</document>

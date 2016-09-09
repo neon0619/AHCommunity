@@ -1,18 +1,21 @@
 PODS:
   - Eureka (1.7.0)
   - SideMenuController (0.1.6)
+  - SwiftyJSON (2.3.2)
   - YouTubePlayer (0.3.0)
 
 DEPENDENCIES:
   - Eureka (~> 1.7)
   - SideMenuController (~> 0.1.5)
+  - SwiftyJSON
   - YouTubePlayer
 
 SPEC CHECKSUMS:
   Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
   SideMenuController: 442d67af6d5892934065d42d5c1c3b7d5be4953e
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
   YouTubePlayer: 88713a96c356f2c88da8925eb61438eda88bcd57
 
-PODFILE CHECKSUM: d3e93d597961562e295588d3b185a50861df5e6a
+PODFILE CHECKSUM: 40e7a3c6615e2d763d7b32b884a854b9038489eb
 
 COCOAPODS: 1.0.0.beta.8

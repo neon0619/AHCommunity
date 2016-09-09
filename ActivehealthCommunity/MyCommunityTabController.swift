@@ -123,7 +123,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         switch index {
         case 0:
             let ahcTeam = storyboard?.instantiateViewControllerWithIdentifier("ahcTeamController") as! AhcTeamViewController
-            ahcTeam.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 137)
+            ahcTeam.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
@@ -131,7 +131,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             presentController(ahcTeam)
         case 1:
             let ahcCoaches = storyboard?.instantiateViewControllerWithIdentifier("ahcCoachController") as! AhcCoachesViewController
-            ahcCoaches.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 137)
+            ahcCoaches.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
@@ -139,7 +139,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             presentController(ahcCoaches)
         case 2:
             let ahcMentors = storyboard?.instantiateViewControllerWithIdentifier("ahcMentorController") as! AhcMentorsViewController
-            ahcMentors.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 137)
+            ahcMentors.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil

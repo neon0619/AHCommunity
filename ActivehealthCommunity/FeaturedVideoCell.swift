@@ -12,8 +12,8 @@ import YouTubePlayer
 class FeaturedVideoCell: UITableViewCell {
 
     @IBOutlet var lblDesc: UILabel!
-    @IBOutlet var playerView: YouTubePlayerView!
     
+    @IBOutlet var videoPlayer: UIWebView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
