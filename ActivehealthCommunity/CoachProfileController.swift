@@ -22,58 +22,58 @@ class CoachProfileController : UIViewController, UITableViewDelegate, UITableVie
         
         loadNibs()
         
-        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navBar.setBackgroundImage(UIImage(), for: .default)
         self.navBar.shadowImage = UIImage()
-        self.navBar.translucent = true
+        self.navBar.isTranslucent = true
 
         // Do any additional setup after loading the view.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return profileDetails.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("detailsCell", forIndexPath: indexPath) as! ProfileDetailsCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! ProfileDetailsCell
         
-        cell.lblDetailsName.text = profileDetails[indexPath.row].detailsName
+        cell.lblDetailsName.text = profileDetails[(indexPath as NSIndexPath).row].detailsName
         cell.lblDetailsName.textColor = UIColor(netHex: 0xFF9310)
-        cell.lblDetails.text = profileDetails[indexPath.row].details
+        cell.lblDetails.text = profileDetails[(indexPath as NSIndexPath).row].details
         
         return cell
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = CoachHeaderCell.fromNib()
         
         return headerView
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
          return 250
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
          return 64
     }
     
 
-    @IBAction func handleGesture(sender: UIPanGestureRecognizer) {
+    @IBAction func handleGesture(_ sender: UIPanGestureRecognizer) {
         
         let percentThreshold:CGFloat = 0.3
         
         // convert y-position to downward pull progress (percentage)
-        let translation = sender.translationInView(view)
+        let translation = sender.translation(in: view)
         let verticalMovement = translation.y / view.bounds.height
         let downwardMovement = fmaxf(Float(verticalMovement), 0.0)
         let downwardMovementPercent = fminf(downwardMovement, 1.0)
@@ -82,38 +82,38 @@ class CoachProfileController : UIViewController, UITableViewDelegate, UITableVie
         guard let interactor = interactor else { return }
         
         switch sender.state {
-        case .Began:
+        case .began:
             interactor.hasStarted = true
-            dismissViewControllerAnimated(true, completion: nil)
-        case .Changed:
+            dismiss(animated: true, completion: nil)
+        case .changed:
             interactor.shouldFinish = progress > percentThreshold
-            interactor.updateInteractiveTransition(progress)
-        case .Cancelled:
+            interactor.update(progress)
+        case .cancelled:
             interactor.hasStarted = false
-            interactor.cancelInteractiveTransition()
-        case .Ended:
+            interactor.cancel()
+        case .ended:
             interactor.hasStarted = false
             interactor.shouldFinish
-                ? interactor.finishInteractiveTransition()
-                : interactor.cancelInteractiveTransition()
+                ? interactor.finish()
+                : interactor.cancel()
         default:
             break
         }
     }
    
-    @IBAction func status(sender: AnyObject) {
+    @IBAction func status(_ sender: AnyObject) {
         
-        let statusAlertController = storyboard!.instantiateViewControllerWithIdentifier("statusAlertController") as! StatusViewController
-        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let statusAlertController = storyboard!.instantiateViewController(withIdentifier: "statusAlertController") as! StatusViewController
+        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
         statusAlertController.preferredContentSize = CGSize(width: 200, height: statusAlertController.sportsList.count * 58)
         let popOver = statusAlertController.popoverPresentationController
         popOver?.delegate = self
         popOver?.sourceView = self.view
         popOver?.sourceRect = CGRect(x: (self.navBar.frame.origin.x) + 370, y: (self.navBar.frame.origin.y) + 20, width: 10, height: 10)
-        self.presentViewController(statusAlertController, animated: true, completion: nil)
+        self.present(statusAlertController, animated: true, completion: nil)
     }
     
-    @IBAction func sleepTimer(sender: AnyObject) {
+    @IBAction func sleepTimer(_ sender: AnyObject) {
     }
    
     func loadNibs() {
@@ -123,13 +123,13 @@ class CoachProfileController : UIViewController, UITableViewDelegate, UITableVie
         
         let detailsCell = UINib(nibName: "ProfileDetailsCell", bundle: nil)
         
-        self.tableView.registerNib(detailsCell, forCellReuseIdentifier: "detailsCell")
+        self.tableView.register(detailsCell, forCellReuseIdentifier: "detailsCell")
         
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
-        return .None
+        return .none
     }
     
 }

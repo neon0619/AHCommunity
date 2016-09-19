@@ -16,14 +16,13 @@ protocol SwiftPagesDelegate {
 
 // MARK: - SwiftPages
 
-public class SwiftPages: UIView {
+public class SwiftPages: UIView, UIScrollViewDelegate {
     // current page index and delegate
     var currentIndex: Int = 0
     var delegate : SwiftPagesDelegate?
     
-    private var token: dispatch_once_t = 0
-    
- 
+//    private var token: dispatch_once_t = 0
+    private let _onceToke = "once"
     // Items variables
     private var containerView: UIView!
     private var scrollView: UIScrollView!
@@ -48,9 +47,9 @@ public class SwiftPages: UIView {
     
     // Color variables
     private var animatedBarColor = UIColor(red: 28/255, green: 95/255, blue: 185/255, alpha: 1)
-    private var topBarBackground = UIColor.whiteColor()
-    private var buttonsTextColor = UIColor.grayColor()
-    private var containerViewBackground = UIColor.whiteColor()
+    private var topBarBackground = UIColor.white
+    private var buttonsTextColor = UIColor.gray
+    private var containerViewBackground = UIColor.white
     
     // Item size variables
     private var topBarHeight: CGFloat = 200
@@ -86,34 +85,37 @@ public class SwiftPages: UIView {
     
     public func disableTopBar () { topbarIsEnabled = false }
     
-    override public func drawRect(rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
-        dispatch_once(&token) {
+        
+//        DispatchQueue.once(token: _onceToke) {
+//            print("drawn!")
+//        }
+
             let pagesContainerHeight = self.frame.height - self.yOrigin - self.distanceToBottom
             let pagesContainerWidth = self.frame.width
             
             let pageCount = self.pageCount
             
             // Set the notifications for an orientation change & BG mode
-            let defaultNotificationCenter = NSNotificationCenter.defaultCenter()
-            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.applicationWillEnterBackground), name: UIApplicationWillResignActiveNotification, object: nil)
-            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.orientationWillChange), name: UIApplicationWillChangeStatusBarOrientationNotification, object: nil)
-            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.orientationDidChange), name: UIDeviceOrientationDidChangeNotification, object: nil)
+            let defaultNotificationCenter = NotificationCenter.default
+            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.applicationWillEnterBackground), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
+            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.orientationWillChange), name: NSNotification.Name.UIApplicationWillChangeStatusBarOrientation, object: nil)
+            defaultNotificationCenter.addObserver(self, selector: #selector(SwiftPages.orientationDidChange), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
             
             // Set the containerView, every item is constructed relative to this view
             self.containerView = UIView(frame: CGRect(x: self.xOrigin, y: self.yOrigin, width: pagesContainerWidth, height: pagesContainerHeight))
             self.containerView.backgroundColor = self.containerViewBackground
             self.containerView.translatesAutoresizingMaskIntoConstraints = false
             self.addSubview(self.containerView)
-            self.sendSubviewToBack(self.containerView)
             
             //Add the constraints to the containerView.
             if #available(iOS 9.0, *) {
-                let horizontalConstraint = self.containerView.centerXAnchor.constraintEqualToAnchor(self.centerXAnchor)
-                let verticalConstraint = self.containerView.centerYAnchor.constraintEqualToAnchor(self.centerYAnchor)
-                let widthConstraint = self.containerView.widthAnchor.constraintEqualToAnchor(self.widthAnchor)
-                let heightConstraint = self.containerView.heightAnchor.constraintEqualToAnchor(self.heightAnchor)
-                NSLayoutConstraint.activateConstraints([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
+                let horizontalConstraint = self.containerView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+                let verticalConstraint = self.containerView.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+                let widthConstraint = self.containerView.widthAnchor.constraint(equalTo: self.widthAnchor)
+                let heightConstraint = self.containerView.heightAnchor.constraint(equalTo: self.heightAnchor)
+                NSLayoutConstraint.activate([horizontalConstraint, verticalConstraint, widthConstraint, heightConstraint])
             }
             
             
@@ -123,34 +125,34 @@ public class SwiftPages: UIView {
             } else {
                 self.scrollView = UIScrollView(frame: CGRect(x: 0, y: self.topBarHeight, width: self.containerView.frame.size.width, height: self.containerView.frame.size.height - self.topBarHeight))
             }
-            self.scrollView.pagingEnabled = true
+            self.scrollView.isPagingEnabled = true
             self.scrollView.showsHorizontalScrollIndicator = false
             self.scrollView.showsVerticalScrollIndicator = false
             self.scrollView.delegate = self
-            self.scrollView.backgroundColor = UIColor.clearColor()
+            self.scrollView.backgroundColor = UIColor.clear
             self.scrollView.contentOffset = CGPoint(x: 0, y: 0)
             self.scrollView.translatesAutoresizingMaskIntoConstraints = false
             self.containerView.addSubview(self.scrollView)
             
             // Add the constraints to the scrollview.
             if #available(iOS 9.0, *) {
-                let leadingConstraint = self.scrollView.leadingAnchor.constraintEqualToAnchor(self.containerView.leadingAnchor)
-                let trailingConstraint = self.scrollView.trailingAnchor.constraintEqualToAnchor(self.containerView.trailingAnchor)
-                let topConstraint = self.scrollView.topAnchor.constraintEqualToAnchor(self.containerView.topAnchor)
-                let bottomConstraint = self.scrollView.bottomAnchor.constraintEqualToAnchor(self.containerView.bottomAnchor)
-                NSLayoutConstraint.activateConstraints([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
+                let leadingConstraint = self.scrollView.leadingAnchor.constraint(equalTo: self.containerView.leadingAnchor)
+                let trailingConstraint = self.scrollView.trailingAnchor.constraint(equalTo: self.containerView.trailingAnchor)
+                let topConstraint = self.scrollView.topAnchor.constraint(equalTo: self.containerView.topAnchor)
+                let bottomConstraint = self.scrollView.bottomAnchor.constraint(equalTo: self.containerView.bottomAnchor)
+                NSLayoutConstraint.activate([leadingConstraint, trailingConstraint, topConstraint, bottomConstraint])
             }
             
             // Set the top bar
-            self.topBar = UIView(frame: CGRect(x: 0, y: 500, width: self.containerView.frame.size.width, height: self.topBarHeight))
+            self.topBar = UIView(frame: CGRect(x: 0, y: 0, width: self.containerView.frame.size.width, height: self.topBarHeight))
             self.topBar.backgroundColor = self.topBarBackground
             
             if self.aeroEffectInTopBar {
                 // Create the blurred visual effect
                 // You can choose between ExtraLight, Light and Dark
-                self.topBar.backgroundColor = UIColor.clearColor()
+                self.topBar.backgroundColor = UIColor.clear
                 
-                let blurEffect: UIBlurEffect = UIBlurEffect(style: .Light)
+                let blurEffect: UIBlurEffect = UIBlurEffect(style: .light)
                 self.blurView = UIVisualEffectView(effect: blurEffect)
                 
                 self.blurView.frame = self.topBar.bounds
@@ -167,15 +169,15 @@ public class SwiftPages: UIView {
             if self.buttonsWithImages {
                 var buttonsXPosition: CGFloat = 0
                 
-                for (index, image) in self.buttonImages.enumerate() {
+                for (index, image) in self.buttonImages.enumerated() {
                     let frame = CGRect(x: buttonsXPosition, y: 0, width: self.containerView.frame.size.width / CGFloat(pageCount), height: self.topBarHeight)
                     
                     let barButton = UIButton(frame: frame)
-                    barButton.backgroundColor = UIColor.clearColor()
-                    barButton.imageView?.contentMode = .ScaleAspectFit
-                    barButton.setImage(image, forState: .Normal)
+                    barButton.backgroundColor = UIColor.clear
+                    barButton.imageView?.contentMode = .scaleAspectFit
+                    barButton.setImage(image, for: .normal)
                     barButton.tag = index
-                    barButton.addTarget(self, action: #selector(SwiftPages.barButtonAction(_:)), forControlEvents: .TouchUpInside)
+                    barButton.addTarget(self, action: #selector(SwiftPages.barButtonAction(sender:)), for: .touchUpInside)
                     self.topBar.addSubview(barButton)
                     self.barButtons.append(barButton)
                     
@@ -184,16 +186,16 @@ public class SwiftPages: UIView {
             } else {
                 var buttonsXPosition: CGFloat = 0
                 
-                for (index, title) in self.buttonTitles.enumerate() {
+                for (index, title) in self.buttonTitles.enumerated() {
                     let frame = CGRect(x: buttonsXPosition, y: 0, width: self.containerView.frame.size.width / CGFloat(pageCount), height: self.topBarHeight)
                     
                     let barButton = UIButton(frame: frame)
-                    barButton.backgroundColor = UIColor.clearColor()
+                    barButton.backgroundColor = UIColor.clear
                     barButton.titleLabel!.font = self.buttonsTextFontAndSize
-                    barButton.setTitle(title, forState: .Normal)
-                    barButton.setTitleColor(self.buttonsTextColor, forState: .Normal)
+                    barButton.setTitle(title, for: .normal)
+                    barButton.setTitleColor(self.buttonsTextColor, for: .normal)
                     barButton.tag = index
-                    barButton.addTarget(self, action: #selector(SwiftPages.barButtonAction(_:)), forControlEvents: .TouchUpInside)
+                    barButton.addTarget(self, action: #selector(SwiftPages.barButtonAction(sender:)), for: .touchUpInside)
                     self.topBar.addSubview(barButton)
                     self.barButtons.append(barButton)
                     
@@ -213,8 +215,8 @@ public class SwiftPages: UIView {
             if self.barShadow {
                 self.shadowView = UIView(frame: CGRect(x: 0, y: self.topBarHeight, width: self.containerView.frame.size.width, height: 4))
                 self.shadowViewGradient.frame = self.shadowView.bounds
-                self.shadowViewGradient.colors = [UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.28).CGColor, UIColor.clearColor().CGColor]
-                self.shadowView.layer.insertSublayer(self.shadowViewGradient, atIndex: 0)
+                self.shadowViewGradient.colors = [UIColor(red: 150/255, green: 150/255, blue: 150/255, alpha: 0.28).cgColor, UIColor.clear.cgColor]
+                self.shadowView.layer.insertSublayer(self.shadowViewGradient, at: 0)
                 if self.topbarIsEnabled {
                     self.containerView.addSubview(self.shadowView)
                 }
@@ -230,23 +232,26 @@ public class SwiftPages: UIView {
             self.scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageCount), height: pagesScrollViewSize.height)
             
             // Load the pages to show initially
-            self.loadVisiblePages()
+            loadPage(page: 0)
+            alignSubviews()
+//            self.loadVisiblePages()
             
             // Do the initial alignment of the subViews
 //            self.alignSubviews()
-        }
+            
+        
     }
     
     // MARK: - Initialization Functions -
     
     public func initializeWithVCIDsArrayAndButtonTitlesArray (VCIDsArray: [String], buttonTitlesArray: [String], storyBoard: UIStoryboard) {
         self.storyBoard = storyBoard;
-        initializeWithVCIDsArrayAndButtonTitlesArray (VCIDsArray, buttonTitlesArray: buttonTitlesArray)
+        initializeWithVCIDsArrayAndButtonTitlesArray (VCIDsArray: VCIDsArray, buttonTitlesArray: buttonTitlesArray)
     }
     
     public func initializeWithVCIDsArrayAndButtonImagesArray (VCIDsArray: [String], buttonImagesArray: [UIImage], storyBoard: UIStoryboard) {
         self.storyBoard = storyBoard
-        initializeWithVCIDsArrayAndButtonImagesArray(VCIDsArray, buttonImagesArray: buttonImagesArray)
+        initializeWithVCIDsArrayAndButtonImagesArray(VCIDsArray: VCIDsArray, buttonImagesArray: buttonImagesArray)
     }
     
     public func initializeWithVCsInstanciatedArrayAndButtonTitlesArray(VCsArray: [UIViewController], buttonTitlesArray: [String]) {
@@ -309,7 +314,7 @@ public class SwiftPages: UIView {
         frame.origin.x = frame.size.width * CGFloat(page)
         frame.origin.y = 0.0
         
-        let newPageView = viewControllerForPage(page)
+        let newPageView = viewControllerForPage(page: page)
         newPageView.view.frame = frame
         scrollView.addSubview(newPageView.view)
         
@@ -320,7 +325,7 @@ public class SwiftPages: UIView {
     public func viewControllerForPage(page: Int) -> UIViewController {
         //Look for the VC in the VC id list or in the VC object list
         if viewControllerIDs.count != 0 {
-            return instanciateViewControllerWithIdentifier(viewControllerIDs[page])
+            return instanciateViewControllerWithIdentifier(identifier: viewControllerIDs[page])
         }
         return viewControllersArray[page]
     }
@@ -328,30 +333,30 @@ public class SwiftPages: UIView {
     public func instanciateViewControllerWithIdentifier(identifier: String) -> UIViewController {
         //If we have a storyboard created
         if let storyBoard = storyBoard {
-            return storyBoard.instantiateViewControllerWithIdentifier(identifier)
+            return storyBoard.instantiateViewController(withIdentifier: identifier)
         }
-        return UIStoryboard(name: storyBoardName, bundle: nil).instantiateViewControllerWithIdentifier(identifier)
+        return UIStoryboard(name: storyBoardName, bundle: nil).instantiateViewController(withIdentifier: identifier)
     }
     
     public func loadVisiblePages() {
         // First, determine which page is currently visible
         let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x * 3.0 + pageWidth) / (pageWidth * 3.0)))
+        let page = Int(floor((scrollView.contentOffset.x * 2.0 + pageWidth) / (pageWidth * 2.0)))
         
         // make sure the delegate method called once
         if currentIndex != page {
             currentIndex = page;
-            self.delegate?.SwiftPagesCurrentPageNumber(currentIndex)
+            self.delegate?.SwiftPagesCurrentPageNumber(currentIndex: currentIndex)
         }
         
         // Work out which pages you want to load
         let firstPage = page - 1
         let lastPage = page + 1
         
-        // Load pages in our range
-        for index in firstPage...lastPage {
 
-            loadPage(index)
+//         Load pages in our range
+        for index in firstPage...lastPage {
+            loadPage(page: index)
             alignSubviews()
         }
     }
@@ -380,7 +385,7 @@ public class SwiftPages: UIView {
         }
         
         // Set the new frame of the scrollview contents
-        for (index, controller) in pageViews.enumerate() {
+        for (index, controller) in pageViews.enumerated() {
             controller?.view.frame = CGRect(x: CGFloat(index) * scrollView.bounds.size.width, y: self.topBarHeight , width: scrollView.bounds.size.width, height: scrollView.bounds.size.height - self.topBarHeight)
         }
         
@@ -390,9 +395,6 @@ public class SwiftPages: UIView {
             button?.frame = CGRect(x: buttonsXPosition, y: self.topBar.frame.maxY - 35, width: containerView.frame.size.width / CGFloat(pageCount), height: 30)
             buttonsXPosition += containerView.frame.size.width / CGFloat(pageCount)
         }
-        
-        
-
     }
     
     func applicationWillEnterBackground() {
@@ -413,7 +415,7 @@ public class SwiftPages: UIView {
     
     // MARK: - ScrollView delegate -
     
-    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let previousPage : NSInteger = currentPage
         let pageWidth : CGFloat = scrollView.frame.size.width
         let fractionalPage = scrollView.contentOffset.x / pageWidth
@@ -426,17 +428,12 @@ public class SwiftPages: UIView {
     // MARK: - deinit -
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
-}
-
-
-// MARK: - SwiftPages: UIScrollViewDelegate
-
-extension SwiftPages: UIScrollViewDelegate {
     
-    public func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Load the pages that are now on screen
+        print("hehhehe")
         loadVisiblePages()
         
         // The calculations for the animated bar's movements
@@ -444,4 +441,7 @@ extension SwiftPages: UIScrollViewDelegate {
         let offsetAddition = (containerView.frame.size.width / CGFloat(pageCount)) * 0.1
         animatedBar.frame = CGRect(x: (offsetAddition + (scrollView.contentOffset.x / CGFloat(pageCount))), y: animatedBar.frame.origin.y, width: animatedBar.frame.size.width, height: animatedBar.frame.size.height)
     }
+
 }
+
+

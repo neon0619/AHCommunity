@@ -17,7 +17,7 @@ class MenuCell: UITableViewCell {
         
     }
     
-    func setCellDetails(menu: Menu) {
+    func setCellDetails(_ menu: Menu) {
         
         lblTitle.text = menu.title
         imgIcon.image = menu.image

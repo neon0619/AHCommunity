@@ -1,21 +1,34 @@
 PODS:
   - Eureka (1.7.0)
-  - SideMenuController (0.1.6)
+  - SideMenuController (0.2.0)
   - SwiftyJSON (2.3.2)
-  - YouTubePlayer (0.3.0)
 
 DEPENDENCIES:
-  - Eureka (~> 1.7)
-  - SideMenuController (~> 0.1.5)
-  - SwiftyJSON
-  - YouTubePlayer
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Swift3`)
+  - SideMenuController (~> 0.2.0)
+  - SwiftyJSON (from `https://github.com/BaiduHiDeviOS/SwiftyJSON.git`, branch `swift3`)
+
+EXTERNAL SOURCES:
+  Eureka:
+    :branch: Swift3
+    :git: https://github.com/xmartlabs/Eureka.git
+  SwiftyJSON:
+    :branch: swift3
+    :git: https://github.com/BaiduHiDeviOS/SwiftyJSON.git
+
+CHECKOUT OPTIONS:
+  Eureka:
+    :commit: c2b0b03a1e33180af9c5ff30542b516aa495d24b
+    :git: https://github.com/xmartlabs/Eureka.git
+  SwiftyJSON:
+    :commit: de5dc3b1b421805769590d331178551bbb0e5733
+    :git: https://github.com/BaiduHiDeviOS/SwiftyJSON.git
 
 SPEC CHECKSUMS:
   Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
-  SideMenuController: 442d67af6d5892934065d42d5c1c3b7d5be4953e
-  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
-  YouTubePlayer: 88713a96c356f2c88da8925eb61438eda88bcd57
+  SideMenuController: fe6ce032847d4021ac5ead7ee1b05364df5739e7
+  SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
 
-PODFILE CHECKSUM: 40e7a3c6615e2d763d7b32b884a854b9038489eb
+PODFILE CHECKSUM: a7805c2d53c090e3f4cef1045cb891a874a64f20
 
-COCOAPODS: 1.0.0.beta.8
+COCOAPODS: 1.1.0.rc.2

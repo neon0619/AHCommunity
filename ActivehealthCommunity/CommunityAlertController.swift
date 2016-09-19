@@ -9,7 +9,7 @@
 import UIKit
 
 protocol CommunityAlertDelegate {
-    func optionSelected(index: Int)
+    func optionSelected(_ index: Int)
 }
 
 class CommunityAlertController: UIViewController, UITableViewDelegate, UITableViewDataSource{
@@ -28,29 +28,29 @@ class CommunityAlertController: UIViewController, UITableViewDelegate, UITableVi
        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return options.count
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CommunityAlertCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CommunityAlertCell
         
-        cell.imgIcon.image = UIImage(named: options[indexPath.row].imageName)
-        cell.lblTitle.text = options[indexPath.row].title
+        cell.imgIcon.image = UIImage(named: options[(indexPath as NSIndexPath).row].imageName)
+        cell.lblTitle.text = options[(indexPath as NSIndexPath).row].title
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        delegate?.optionSelected(indexPath.row)
+        delegate?.optionSelected((indexPath as NSIndexPath).row)
       
         
         //        switch indexPath.row {

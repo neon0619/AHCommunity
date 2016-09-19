@@ -14,7 +14,7 @@ public extension UIDevice {
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
         let identifier = machineMirror.children.reduce("") { identifier, element in
-            guard let value = element.value as? Int8 where value != 0 else { return identifier }
+            guard let value = element.value as? Int8 , value != 0 else { return identifier }
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         
@@ -62,32 +62,32 @@ extension UIColor {
 
 extension UIStoryboard {
     
-    class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
+    class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: Bundle.main) }
     
     class func leftViewController() -> MenuViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("MenuViewController") as? MenuViewController
+        return mainStoryboard().instantiateViewController(withIdentifier: "MenuViewController") as? MenuViewController
     }
     
     class func centerViewController() -> MainViewController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("MainViewController") as? MainViewController
+        return mainStoryboard().instantiateViewController(withIdentifier: "MainViewController") as? MainViewController
     }
     
     class func firstViewController() -> CommunityAlertController? {
-        return mainStoryboard().instantiateViewControllerWithIdentifier("alertView") as? CommunityAlertController
+        return mainStoryboard().instantiateViewController(withIdentifier: "alertView") as? CommunityAlertController
     }
 }
 
 public extension UIView {
-    public class func fromNib(nibNameOrNil: String? = nil) -> Self {
+    public class func fromNib(_ nibNameOrNil: String? = nil) -> Self {
         return fromNib(nibNameOrNil, type: self)
     }
     
-    public class func fromNib<T : UIView>(nibNameOrNil: String? = nil, type: T.Type) -> T {
+    public class func fromNib<T : UIView>(_ nibNameOrNil: String? = nil, type: T.Type) -> T {
         let v: T? = fromNib(nibNameOrNil, type: T.self)
         return v!
     }
     
-    public class func fromNib<T : UIView>(nibNameOrNil: String? = nil, type: T.Type) -> T? {
+    public class func fromNib<T : UIView>(_ nibNameOrNil: String? = nil, type: T.Type) -> T? {
         var view: T?
         let name: String
         if let nibName = nibNameOrNil {
@@ -96,8 +96,8 @@ public extension UIView {
             // Most nibs are demangled by practice, if not, just declare string explicitly
             name = nibName
         }
-        let nibViews = NSBundle.mainBundle().loadNibNamed(name, owner: nil, options: nil)
-        for v in nibViews {
+        let nibViews = Bundle.main.loadNibNamed(name, owner: nil, options: nil)
+        for v in nibViews! {
             if let tog = v as? T {
                 view = tog
             }
@@ -106,11 +106,11 @@ public extension UIView {
     }
     
     public class var nibName: String {
-        let name = "\(self)".componentsSeparatedByString(".").first ?? ""
+        let name = "\(self)".components(separatedBy: ".").first ?? ""
         return name
     }
     public class var nib: UINib? {
-        if let _ = NSBundle.mainBundle().pathForResource(nibName, ofType: "nib") {
+        if let _ = Bundle.main.path(forResource: nibName, ofType: "nib") {
             return UINib(nibName: nibName, bundle: nil)
         } else {
             return nil
@@ -120,21 +120,21 @@ public extension UIView {
 
 extension UISegmentedControl {
     func removeBorders() {
-        setBackgroundImage(imageWithColor(UIColor.clearColor()), forState: .Normal, barMetrics: .Default)
-        setBackgroundImage(imageWithColor(UIColor.clearColor()), forState: .Selected, barMetrics: .Default)
-        setDividerImage(imageWithColor(UIColor.clearColor()), forLeftSegmentState: .Normal, rightSegmentState: .Normal, barMetrics: .Default)
+        setBackgroundImage(imageWithColor(UIColor.clear), for: UIControlState(), barMetrics: .default)
+        setBackgroundImage(imageWithColor(UIColor.clear), for: .selected, barMetrics: .default)
+        setDividerImage(imageWithColor(UIColor.clear), forLeftSegmentState: UIControlState(), rightSegmentState: UIControlState(), barMetrics: .default)
     }
     
     // create a 1x1 image with this color
-    private func imageWithColor(color: UIColor) -> UIImage {
-        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+    fileprivate func imageWithColor(_ color: UIColor) -> UIImage {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
         UIGraphicsBeginImageContext(rect.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, color.CGColor);
-        CGContextFillRect(context, rect);
+        context?.setFillColor(color.cgColor);
+        context?.fill(rect);
         let image = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        return image
+        return image!
     }
 }
 

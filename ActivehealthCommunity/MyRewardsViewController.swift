@@ -18,26 +18,26 @@ class MyRewardsViewController: UIViewController, UIPopoverPresentationController
         
     }
     
-    @IBAction func status(sender: AnyObject) {
+    @IBAction func status(_ sender: AnyObject) {
         
-        let statusAlertController = storyboard!.instantiateViewControllerWithIdentifier("statusAlertController") as! StatusViewController
-        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let statusAlertController = storyboard!.instantiateViewController(withIdentifier: "statusAlertController") as! StatusViewController
+        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
         statusAlertController.preferredContentSize = CGSize(width: 200, height: statusAlertController.sportsList.count * 58)
         let popOver = statusAlertController.popoverPresentationController
         popOver?.delegate = self
         popOver?.sourceView = self.view
         popOver?.sourceRect = CGRect(x: (self.navigationController?.navigationBar.frame.origin.x)! + 370, y: (self.navigationController?.navigationBar.frame.origin.y)! + 20, width: 10, height: 10)
-        self.presentViewController(statusAlertController, animated: true, completion: nil)
+        self.present(statusAlertController, animated: true, completion: nil)
 
     }
     
     
-    @IBAction func sleepTimer(sender: AnyObject) {
+    @IBAction func sleepTimer(_ sender: AnyObject) {
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
-        return .None
+        return .none
     }
 
 }

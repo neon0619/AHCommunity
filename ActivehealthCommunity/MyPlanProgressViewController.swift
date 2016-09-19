@@ -18,16 +18,16 @@ class MyPlanProgressViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
        
         if !viewsDidAppear {
-            progressView.createLabel(.whiteColor())
-            progressView.createProgressLayer(UIColor(netHex: 0xFF9310).CGColor, strokeColor2: UIColor(netHex: 0xFFFFFF).CGColor, lineWidth: 10.0, lineWidth2: 10.0,lineCap: kCALineCapRound)
+            progressView.createLabel(.white)
+            progressView.createProgressLayer(UIColor(netHex: 0xFF9310).cgColor, strokeColor2: UIColor(netHex: 0xFFFFFF).cgColor, lineWidth: 10.0, lineWidth2: 10.0,lineCap: kCALineCapRound)
             progressView.animateProgressView(80,progressType: "percentage")
         }
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         viewsDidAppear = true
     }
     

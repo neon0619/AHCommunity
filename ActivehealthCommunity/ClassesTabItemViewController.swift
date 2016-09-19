@@ -22,19 +22,19 @@ class ClassesTabItemViewController: UIViewController, UITableViewDelegate, UITab
       
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("classesCell", forIndexPath: indexPath) as! ClassesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "classesCell", for: indexPath) as! ClassesCell
         
         cell.lblTitle.text = "Class Training Triathlon"
         cell.lblDate.text = "February 27-28 2016"
@@ -46,7 +46,7 @@ class ClassesTabItemViewController: UIViewController, UITableViewDelegate, UITab
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 300
     }
@@ -55,7 +55,7 @@ class ClassesTabItemViewController: UIViewController, UITableViewDelegate, UITab
         
         let classCell = UINib(nibName: "ClassesCell", bundle: nil)
         
-        self.tableView.registerNib(classCell, forCellReuseIdentifier: "classesCell")
+        self.tableView.register(classCell, forCellReuseIdentifier: "classesCell")
     }
     
     

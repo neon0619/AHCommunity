@@ -4,10 +4,23 @@
  use_frameworks!
 
 target 'ActivehealthCommunity' do
-pod 'SideMenuController', '~> 0.1.5'
-pod 'YouTubePlayer'
-pod 'Eureka', '~> 1.7'
-pod 'SwiftyJSON'
+
+	pod 'Eureka',
+		:git => 'https://github.com/xmartlabs/Eureka.git',
+		:branch => 'Swift3'
+
+	pod 'SwiftyJSON', 
+	:git => 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git',
+	:branch => 'swift3'
+
+	pod 'SideMenuController', '~> 0.2.0'
 
 end
 
+ post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings['SWIFT_VERSION'] = '3.0'
+        end
+    end
+  end

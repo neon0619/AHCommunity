@@ -10,9 +10,9 @@ import UIKit
 
 class LabelWithInsets: UILabel {
 
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         let insets = UIEdgeInsets.init(top: 0, left: 30, bottom: 0, right: 5)
-        super.drawTextInRect(UIEdgeInsetsInsetRect(rect, insets))
+        super.drawText(in: UIEdgeInsetsInsetRect(rect, insets))
     }
 
 }

@@ -23,13 +23,13 @@ class ClassesCell: UITableViewCell {
         
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
 
-    @IBAction func Join(sender: AnyObject) {
+    @IBAction func Join(_ sender: AnyObject) {
         
         print("haha")
     }

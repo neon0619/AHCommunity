@@ -36,6 +36,7 @@
 		B7998FAE1D4844F700064B8F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7998FAD1D4844F700064B8F /* MenuViewController.swift */; };
 		B7998FB21D48467800064B8F /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7998FB11D48467800064B8F /* MenuCell.swift */; };
 		B7998FB41D48470400064B8F /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7998FB31D48470400064B8F /* MenuCell.xib */; };
+		B7A435C51D8FCBB50028074F /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A435C41D8FCBB50028074F /* SwiftPages.swift */; };
 		B7A4D7D41D769B4F00816D13 /* AhcTeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7D31D769B4F00816D13 /* AhcTeamCell.swift */; };
 		B7A4D7D61D769B7D00816D13 /* AhcTeamCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A4D7D51D769B7D00816D13 /* AhcTeamCell.xib */; };
 		B7A4D7DA1D76A68200816D13 /* FeaturedVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7D81D76A68200816D13 /* FeaturedVideoCell.swift */; };
@@ -43,7 +44,6 @@
 		B7A4D7DD1D76AB5200816D13 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7DC1D76AB5200816D13 /* Video.swift */; };
 		B7A4D7EB1D77E75A00816D13 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7EA1D77E75A00816D13 /* ProfileViewController.swift */; };
 		B7A4D7ED1D77E82300816D13 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7EC1D77E82300816D13 /* HeaderView.swift */; };
-		B7A4D7F21D77EFDF00816D13 /* SwiftPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7F11D77EFDF00816D13 /* SwiftPages.swift */; };
 		B7A4D7F41D77F31400816D13 /* UserProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */; };
 		B7A4D7FC1D78162000816D13 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7A4D7FB1D78162000816D13 /* ProfileHeaderView.swift */; };
 		B7A4D7FE1D78162F00816D13 /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7A4D7FD1D78162F00816D13 /* ProfileHeaderView.xib */; };
@@ -137,6 +137,7 @@
 		B7998FAD1D4844F700064B8F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B7998FB11D48467800064B8F /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		B7998FB31D48470400064B8F /* MenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		B7A435C41D8FCBB50028074F /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
 		B7A4D7D31D769B4F00816D13 /* AhcTeamCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AhcTeamCell.swift; sourceTree = "<group>"; };
 		B7A4D7D51D769B7D00816D13 /* AhcTeamCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AhcTeamCell.xib; sourceTree = "<group>"; };
 		B7A4D7D81D76A68200816D13 /* FeaturedVideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedVideoCell.swift; sourceTree = "<group>"; };
@@ -144,7 +145,6 @@
 		B7A4D7DC1D76AB5200816D13 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		B7A4D7EA1D77E75A00816D13 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		B7A4D7EC1D77E82300816D13 /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		B7A4D7F11D77EFDF00816D13 /* SwiftPages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftPages.swift; sourceTree = "<group>"; };
 		B7A4D7F31D77F31400816D13 /* UserProfileDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		B7A4D7FB1D78162000816D13 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		B7A4D7FD1D78162F00816D13 /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileHeaderView.xib; sourceTree = "<group>"; };
@@ -366,7 +366,7 @@
 		B7998FA31D47291500064B8F /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B7A4D7F11D77EFDF00816D13 /* SwiftPages.swift */,
+				B7A435C41D8FCBB50028074F /* SwiftPages.swift */,
 				B7A4D7EC1D77E82300816D13 /* HeaderView.swift */,
 				B7998FA41D47292800064B8F /* Extensions.swift */,
 				B7DB72261D545F6F00A4D3CF /* DismissAnimator.swift */,
@@ -687,12 +687,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B7998F9D1D46FB4900064B8F /* Build configuration list for PBXNativeTarget "ActivehealthCommunity" */;
 			buildPhases = (
-				D41765330117BF6F74BF5491 /* 📦 Check Pods Manifest.lock */,
+				D41765330117BF6F74BF5491 /* [CP] Check Pods Manifest.lock */,
 				B7998F871D46FB4800064B8F /* Sources */,
 				B7998F881D46FB4800064B8F /* Frameworks */,
 				B7998F891D46FB4800064B8F /* Resources */,
-				BBDFDB01B8DC6E2FD1FAEDDC /* 📦 Embed Pods Frameworks */,
-				E3CC3037470A7D3AAE9707FA /* 📦 Copy Pods Resources */,
+				BBDFDB01B8DC6E2FD1FAEDDC /* [CP] Embed Pods Frameworks */,
+				E3CC3037470A7D3AAE9707FA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -716,6 +716,7 @@
 					B7998F8A1D46FB4800064B8F = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = LWM4935JJ7;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -769,14 +770,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		BBDFDB01B8DC6E2FD1FAEDDC /* 📦 Embed Pods Frameworks */ = {
+		BBDFDB01B8DC6E2FD1FAEDDC /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -784,29 +785,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ActivehealthCommunity/Pods-ActivehealthCommunity-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D41765330117BF6F74BF5491 /* 📦 Check Pods Manifest.lock */ = {
+		D41765330117BF6F74BF5491 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		E3CC3037470A7D3AAE9707FA /* 📦 Copy Pods Resources */ = {
+		E3CC3037470A7D3AAE9707FA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,7 +868,6 @@
 				B7347B881D6D278300250B26 /* ProfileDetails.swift in Sources */,
 				B7A4D7F41D77F31400816D13 /* UserProfileDetailsViewController.swift in Sources */,
 				B7D511B51D6D551600219D6E /* RacePlanViewController.swift in Sources */,
-				B7A4D7F21D77EFDF00816D13 /* SwiftPages.swift in Sources */,
 				B7347B701D6C265400250B26 /* AhcTeamMembersCell.swift in Sources */,
 				B7A4D7FC1D78162000816D13 /* ProfileHeaderView.swift in Sources */,
 				B7347B761D6D14A900250B26 /* LabelWithInsets.swift in Sources */,
@@ -878,6 +878,7 @@
 				B7DB72111D51B54800A4D3CF /* ClassesTabItemViewController.swift in Sources */,
 				B7A4D8071D7FA27900816D13 /* MyPreviousRacesCell.swift in Sources */,
 				B7A4D7DD1D76AB5200816D13 /* Video.swift in Sources */,
+				B7A435C51D8FCBB50028074F /* SwiftPages.swift in Sources */,
 				B7DB721E1D52F4A800A4D3CF /* Options.swift in Sources */,
 				B7DB71FC1D4EE8C300A4D3CF /* MenuHeaderCell.swift in Sources */,
 				B7D511A71D6D391C00219D6E /* AhcMentorsViewController.swift in Sources */,
@@ -1015,6 +1016,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1031,6 +1033,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

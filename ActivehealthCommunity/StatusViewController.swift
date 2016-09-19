@@ -31,22 +31,22 @@ class StatusViewController: UIViewController, UITableViewDataSource, UITableView
    
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return sportsList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("statusCell", forIndexPath: indexPath) as! StatusCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "statusCell", for: indexPath) as! StatusCell
         
-        cell.imageSport.image = sportsList[indexPath.row].imageSport
-        cell.lblSportName.text = sportsList[indexPath.row].sportName
+        cell.imageSport.image = sportsList[(indexPath as NSIndexPath).row].imageSport
+        cell.lblSportName.text = sportsList[(indexPath as NSIndexPath).row].sportName
         
         return cell
     }

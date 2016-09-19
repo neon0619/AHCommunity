@@ -23,43 +23,43 @@ class AhcCoachesViewController: UIViewController, UITableViewDelegate, UITableVi
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 2
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("ahcCell", forIndexPath: indexPath) as! AhcCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ahcCell", for: indexPath) as! AhcCell
         
         cell.lbldesc.text = "Maria Sharapova"
         cell.img.image = UIImage(named: "placeholder7")
         cell.btnView.backgroundColor = UIColor(netHex: 0xFF9310)
         
-        cell.btnView.tag = indexPath.row
-        cell.btnView.addTarget(self, action: #selector(AhcTeamViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        cell.btnView.tag = (indexPath as NSIndexPath).row
+        cell.btnView.addTarget(self, action: #selector(AhcTeamViewController.buttonClicked(_:)), for: UIControlEvents.touchUpInside)
         
         return cell
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 300
     }
     
     
-    func buttonClicked(sender: UIButton) {
+    func buttonClicked(_ sender: UIButton) {
         let buttonRow = sender.tag
         //        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         //        let vc = storyboard.instantiateViewControllerWithIdentifier("teamProfileController") as! TeamProfileViewController
         //        showViewController(vc, sender: nil)
-        performSegueWithIdentifier("toCoachesController", sender: self)
+        performSegue(withIdentifier: "toCoachesController", sender: self)
         switch buttonRow {
         case 0:
             
@@ -77,31 +77,31 @@ class AhcCoachesViewController: UIViewController, UITableViewDelegate, UITableVi
         
         let ahcCell = UINib(nibName: "AhcCell", bundle: nil)
         
-        self.tableView.registerNib(ahcCell, forCellReuseIdentifier: "ahcCell")
+        self.tableView.register(ahcCell, forCellReuseIdentifier: "ahcCell")
         
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         print("segue!")
-        if let destinationViewController = segue.destinationViewController as? CoachProfileController {
+        if let destinationViewController = segue.destination as? CoachProfileController {
             destinationViewController.transitioningDelegate = self
             destinationViewController.interactor = interactor // new
         }
     }
     
     
-    @IBAction func unwindToViewController (sender: UIStoryboardSegue){
+    @IBAction func unwindToViewController (_ sender: UIStoryboardSegue){
         //        txtUserType.enabled = true
         
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return DismissAnimator()
     }
     
     
-    func interactionControllerForDismissal(animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return interactor.hasStarted ? interactor : nil
     }
     

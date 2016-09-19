@@ -10,7 +10,7 @@ import UIKit
 import SideMenuController
 
 protocol MenuViewControllerDelegate {
-    func optionSelected(animal: Menu)
+    func optionSelected(_ animal: Menu)
 }
 
 class MenuViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -49,63 +49,63 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
      
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
 //        updateArrayMenuOptions()
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return menu.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(TableView.CellIdentifiers.AnimalCell, forIndexPath: indexPath) as! MenuCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.CellIdentifiers.AnimalCell, for: indexPath) as! MenuCell
         
         cell.backgroundColor = UIColor(netHex: 0xFF9310)
-        cell.lblTitle.textColor = UIColor.whiteColor()
-        cell.setCellDetails(menu[indexPath.row])
+        cell.lblTitle.textColor = UIColor.white
+        cell.setCellDetails(menu[(indexPath as NSIndexPath).row])
         
         return cell
     }
 
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        sideMenuController?.performSegueWithIdentifier(segues[indexPath.row], sender: nil)
+        sideMenuController?.performSegue(withIdentifier: segues[indexPath.row], sender: nil)
         
 //        let selectedOption = menu[indexPath.row]
 //        delegate?.optionSelected(selectedOption)
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerCell = tableView.dequeueReusableCellWithIdentifier("headerCell") as! MenuHeaderCell
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! MenuHeaderCell
         headerCell.backgroundColor = UIColor(netHex: 0x0A1D37)
-        headerCell.editProfile.addTarget(self, action: #selector(MenuViewController.buttonClicked(_:)), forControlEvents: UIControlEvents.TouchUpInside)
-        headerCell.userName.textColor = UIColor.whiteColor()
+        headerCell.editProfile.addTarget(self, action: #selector(MenuViewController.buttonClicked(_:)), for: UIControlEvents.touchUpInside)
+        headerCell.userName.textColor = UIColor.white
         headerCell.userName.text = "Jade Lapuz"
         
         return headerCell
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 300
     }
     
-    func buttonClicked(sender: UIButton) {
+    func buttonClicked(_ sender: UIButton) {
        
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("profileController") as! ProfileViewController
-        showViewController(vc, sender: self)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "profileController") as! ProfileViewController
+        show(vc, sender: self)
         
     }
 
@@ -114,8 +114,8 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         let menuCell = UINib(nibName: "MenuCell", bundle: nil)
         let headerCell = UINib(nibName: "MenuHeaderCell", bundle: nil)
         
-        self.tableView.registerNib(headerCell, forCellReuseIdentifier: "headerCell")
-        self.tableView.registerNib(menuCell, forCellReuseIdentifier: "menuCell")
+        self.tableView.register(headerCell, forCellReuseIdentifier: "headerCell")
+        self.tableView.register(menuCell, forCellReuseIdentifier: "menuCell")
     }
     
     

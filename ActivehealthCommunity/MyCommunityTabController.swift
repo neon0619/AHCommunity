@@ -34,11 +34,11 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         loadFirstab()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
     }
     
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         
         switch item.tag {
             
@@ -46,7 +46,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             
             if viewController1 == nil {
                 
-                viewController1 = storyboard!.instantiateViewControllerWithIdentifier("communityController") as! CommunityTabItemViewController
+                viewController1 = storyboard!.instantiateViewController(withIdentifier: "communityController") as! CommunityTabItemViewController
                 
             }
             self.title = "My Community"
@@ -61,7 +61,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             
             if viewController2 == nil {
                 
-                viewController2 = storyboard!.instantiateViewControllerWithIdentifier("classesController") as! ClassesTabItemViewController
+                viewController2 = storyboard!.instantiateViewController(withIdentifier: "classesController") as! ClassesTabItemViewController
                 
             }
             self.title = "Classes"
@@ -76,7 +76,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             
             if viewController3 == nil {
                 
-                viewController3 = storyboard!.instantiateViewControllerWithIdentifier("featuredStoryController") as! FeaturedStoryTabItemViewController
+                viewController3 = storyboard!.instantiateViewController(withIdentifier: "featuredStoryController") as! FeaturedStoryTabItemViewController
                 
             }
             self.title = "Featured Story"
@@ -90,7 +90,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             
             if viewController4 == nil {
                 
-                viewController4 = storyboard!.instantiateViewControllerWithIdentifier("featuredVideoController") as! FeaturedVideoTabItemViewController
+                viewController4 = storyboard!.instantiateViewController(withIdentifier: "featuredVideoController") as! FeaturedVideoTabItemViewController
                 
             }
             self.title = "Featured Video"
@@ -103,43 +103,43 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         
         switch item.title! {
         case "My Community":
-            communityAlertController = storyboard!.instantiateViewControllerWithIdentifier("alertView") as! CommunityAlertController
-            communityAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+            communityAlertController = storyboard!.instantiateViewController(withIdentifier: "alertView") as! CommunityAlertController
+            communityAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
             communityAlertController.preferredContentSize = CGSize(width: 200, height: 150)
             let popOver = communityAlertController.popoverPresentationController
             popOver?.delegate = self
             popOver?.sourceView = self.view
             popOver?.sourceRect = CGRect(x: tabBar.frame.origin.x - 23, y: tabBar.frame.origin.y - 80, width: 10, height: 10)
             communityAlertController.delegate = self
-            self.presentViewController(communityAlertController, animated: true, completion: nil)
+            self.present(communityAlertController, animated: true, completion: nil)
             break;
         default:
             break;
         }
     }
     
-    func optionSelected(index: Int) {
+    func optionSelected(_ index: Int) {
         print("int \(index)")
         switch index {
         case 0:
-            let ahcTeam = storyboard?.instantiateViewControllerWithIdentifier("ahcTeamController") as! AhcTeamViewController
-            ahcTeam.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
+            let ahcTeam = storyboard?.instantiateViewController(withIdentifier: "ahcTeamController") as! AhcTeamViewController
+            ahcTeam.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
             }
             presentController(ahcTeam)
         case 1:
-            let ahcCoaches = storyboard?.instantiateViewControllerWithIdentifier("ahcCoachController") as! AhcCoachesViewController
-            ahcCoaches.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
+            let ahcCoaches = storyboard?.instantiateViewController(withIdentifier: "ahcCoachController") as! AhcCoachesViewController
+            ahcCoaches.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
             }
             presentController(ahcCoaches)
         case 2:
-            let ahcMentors = storyboard?.instantiateViewControllerWithIdentifier("ahcMentorController") as! AhcMentorsViewController
-            ahcMentors.view.frame = CGRectMake(0, (self.navigationController?.navigationBar.frame.maxY)!, self.view.frame.width, self.view.frame.height - 120)
+            let ahcMentors = storyboard?.instantiateViewController(withIdentifier: "ahcMentorController") as! AhcMentorsViewController
+            ahcMentors.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
@@ -149,19 +149,19 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         }
     }
     
-    func presentController(controller: UIViewController) {
-        UIView.transitionWithView(self.view, duration: 0.5, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+    func presentController(_ controller: UIViewController) {
+        UIView.transition(with: self.view, duration: 0.5, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.addChildViewController(controller)
             self.view.addSubview(controller.view)
-            controller.didMoveToParentViewController(self)
+            controller.didMove(toParentViewController: self)
             self.currentController = controller
             }, completion: { (completed) in
-                self.presentedViewController!.dismissViewControllerAnimated(true, completion: nil)
+                self.presentedViewController!.dismiss(animated: true, completion: nil)
         })
     }
     
-    func  removeController(controller:UIViewController) {
-        controller.willMoveToParentViewController(nil)
+    func  removeController(_ controller:UIViewController) {
+        controller.willMove(toParentViewController: nil)
         controller.view.removeFromSuperview()
         controller.removeFromParentViewController()
     }
@@ -169,38 +169,38 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         tabBar.selectedItem = tab1
         if viewController1 == nil {
             
-            viewController1 = storyboard!.instantiateViewControllerWithIdentifier("communityController") as! CommunityTabItemViewController
+            viewController1 = storyboard!.instantiateViewController(withIdentifier: "communityController") as! CommunityTabItemViewController
             
             self.title = "My Community"
         }
         self.view.insertSubview(viewController1!.view!, belowSubview: self.tabBar)
     }
     
-    func optionSelected(options: Options) {
+    func optionSelected(_ options: Options) {
         
     }
     
     
-    @IBAction func status(sender: AnyObject) {
+    @IBAction func status(_ sender: AnyObject) {
         
-        let statusAlertController = storyboard!.instantiateViewControllerWithIdentifier("statusAlertController") as! StatusViewController
-        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let statusAlertController = storyboard!.instantiateViewController(withIdentifier: "statusAlertController") as! StatusViewController
+        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
         statusAlertController.preferredContentSize = CGSize(width: 200, height: statusAlertController.sportsList.count * 58)
         let popOver = statusAlertController.popoverPresentationController
         popOver?.delegate = self
         popOver?.sourceView = self.view
         popOver?.sourceRect = CGRect(x: (self.navigationController?.navigationBar.frame.origin.x)! + 370, y: (self.navigationController?.navigationBar.frame.origin.y)! + 20, width: 10, height: 10)
-        self.presentViewController(statusAlertController, animated: true, completion: nil)
+        self.present(statusAlertController, animated: true, completion: nil)
         
     }
     
     
-    @IBAction func sleepTimer(sender: AnyObject) {
+    @IBAction func sleepTimer(_ sender: AnyObject) {
     }
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
-        return .None
+        return .none
     }
     
     

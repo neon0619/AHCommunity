@@ -28,35 +28,35 @@ class ProfileViewController: UIViewController {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let VCsInstanciated = VCIDs.map({ storyboard.instantiateViewControllerWithIdentifier($0) })
+        let VCsInstanciated = VCIDs.map({ storyboard.instantiateViewController(withIdentifier: $0) })
 //        VCsInstanciated[0].view.frame = CGRectMake(0, 300, self.view.frame.width, 500)
         
         
         
         // Sample customization
-        swiftPagesView.initializeWithVCsInstanciatedArrayAndButtonImagesArray(VCsInstanciated, buttonImagesArray: buttonImages)
+        swiftPagesView.initializeWithVCsInstanciatedArrayAndButtonImagesArray(VCsArray: VCsInstanciated, buttonImagesArray: buttonImages)
         //swiftPagesView.initializeWithVCIDsArrayAndButtonImagesArray([], buttonImagesArray: buttonImages)
-        swiftPagesView.setTopBarBackground(UIColor(patternImage: UIImage(named: "placeholder2")!))
+        swiftPagesView.setTopBarBackground(color: UIColor(patternImage: UIImage(named: "placeholder2")!))
 //        swiftPagesView.setTopBarBackground(UIColor.cl)
-        swiftPagesView.setAnimatedBarColor(UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1.0))
-        swiftPagesView.setContainerViewBackground(UIColor.lightGrayColor())
+        swiftPagesView.setAnimatedBarColor(color: UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1.0))
+        swiftPagesView.setContainerViewBackground(color: UIColor.lightGray)
         
-        self.navBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        self.navBar.setBackgroundImage(UIImage(), for: .default)
         self.navBar.shadowImage = UIImage()
-        self.navBar.translucent = true
+        self.navBar.isTranslucent = true
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
     }
 
     
-    @IBAction func dismissController(sender: AnyObject) {
+    @IBAction func dismissController(_ sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func changeProfilePicture(sender: AnyObject) {
+    @IBAction func changeProfilePicture(_ sender: AnyObject) {
     }
     
 }

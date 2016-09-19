@@ -19,38 +19,38 @@ class MyPreviousRacesViewController: UIViewController, UITableViewDelegate, UITa
         
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("myPreviousRacesCell", forIndexPath: indexPath) as! MyPreviousRacesCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myPreviousRacesCell", for: indexPath) as! MyPreviousRacesCell
         
         return cell
     }
     
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         
         label.text = "My Previous Races"
         label.frame.size = CGSize()
-        label.textAlignment = .Center
-        label.textColor = UIColor.whiteColor()
+        label.textAlignment = .center
+        label.textColor = UIColor.white
         label.backgroundColor = UIColor(netHex: 0xFF9310)
         
         return label
         
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
     }

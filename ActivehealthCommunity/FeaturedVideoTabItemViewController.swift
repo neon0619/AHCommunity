@@ -27,30 +27,30 @@ class FeaturedVideoTabItemViewController: UIViewController, UITableViewDelegate,
         // Do any additional setup after loading the view.
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 3
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("featuredVideoCell", forIndexPath: indexPath) as! FeaturedVideoCell
-        let urlString = ytLinks[indexPath.row].ytLink!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "featuredVideoCell", for: indexPath) as! FeaturedVideoCell
+        let urlString = ytLinks[(indexPath as NSIndexPath).row].ytLink!
         let urlWithSettings = "<iframe width=\"\(cell.frame.width)\" height=\"\(cell.frame.height - 50)\" src=\"\(urlString)?&playsinline=1\" frameborder=\"0\" allowfullscreen></iframe>"
         
-        cell.lblDesc.text = ytLinks[indexPath.row].description
+        cell.lblDesc.text = ytLinks[(indexPath as NSIndexPath).row].description
         cell.videoPlayer.allowsInlineMediaPlayback = true
         cell.videoPlayer.loadHTMLString(urlWithSettings, baseURL: nil)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 200
     }
@@ -62,7 +62,7 @@ class FeaturedVideoTabItemViewController: UIViewController, UITableViewDelegate,
         
         let videoCell = UINib(nibName: "FeaturedVideoCell", bundle: nil)
         
-        tableView.registerNib(videoCell, forCellReuseIdentifier: "featuredVideoCell")
+        tableView.register(videoCell, forCellReuseIdentifier: "featuredVideoCell")
     
     
     }

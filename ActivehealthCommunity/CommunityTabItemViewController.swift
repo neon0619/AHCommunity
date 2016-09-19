@@ -11,6 +11,27 @@ import MapKit
 import CoreLocation
 import SwiftyJSON
 
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l < r
+    case (nil, _?):
+        return true
+    default:
+        return false
+    }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+    switch (lhs, rhs) {
+    case let (l?, r?):
+        return l > r
+    default:
+        return rhs < lhs
+    }
+}
+
+
 class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     
@@ -49,20 +70,20 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         }
         
         
-//        centerMapOnLocation(locationManager.location!)
+        //        centerMapOnLocation(locationManager.location!)
         
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         
-//        let currentLocation = getCurrentLatLong()
-       
-
+        //        let currentLocation = getCurrentLatLong()
+        
+        
     }
     
     
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         print("update")
         let location = locations.last!
@@ -77,24 +98,24 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         locationManager.stopUpdatingLocation()
     }
     
-    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         
         // Don't want to show a custom image if the annotation is the user's location.
-        guard !annotation.isKindOfClass(MKUserLocation) else {
+        guard !annotation.isKind(of: MKUserLocation.self) else {
             return nil
         }
         
         let annotationIdentifier = "pin"
         
         var annotationView: MKAnnotationView?
-        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(annotationIdentifier) {
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
             annotationView = dequeuedAnnotationView
             annotationView?.annotation = annotation
         }
         else {
             let av = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            av.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
+            av.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             annotationView = av
         }
         
@@ -102,7 +123,7 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
             // Configure your annotation view here
             annotationView.canShowCallout = true
             var image = UIImage()
-            let status = annotation.title as! AnyObject as! String
+            let status = annotation.title!!
             
             switch status {
             case "Resting":
@@ -129,24 +150,24 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         return annotationView
     }
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("hm")
         switch status {
-        case .NotDetermined:
+        case .notDetermined:
             locationManager.requestAlwaysAuthorization()
             break
-        case .AuthorizedWhenInUse:
+        case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
             self.mapView.showsUserLocation = true
             break
-        case .AuthorizedAlways:
+        case .authorizedAlways:
             locationManager.startUpdatingLocation()
             self.mapView.showsUserLocation = true
             break
-        case .Restricted:
+        case .restricted:
             // restricted by e.g. parental controls. User can't enable Location Services
             break
-        case .Denied:
+        case .denied:
             // user denied your app access to Location Services, but can grant access from Settings.app
             break
         default:
@@ -155,7 +176,7 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
     }
     
     
-    func centerMapOnLocation(location: CLLocation) {
+    func centerMapOnLocation(_ location: CLLocation) {
         
         let regionRadius: CLLocationDistance = 1000
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate, regionRadius * 2.0, regionRadius * 2.0)
@@ -166,12 +187,12 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         
         if CLLocationManager.locationServicesEnabled() {
             
-                locationManager.delegate = self
-                locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                self.mapView.showsUserLocation = true
-                locationManager.requestAlwaysAuthorization()
-                locationManager.startUpdatingLocation()
-                print("location!!!! \(locationManager.location)")
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.mapView.showsUserLocation = true
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            print("location!!!! \(locationManager.location)")
             
             
         }
@@ -180,7 +201,7 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         
         if CLLocationManager.locationServicesEnabled() {
             
-            if CLLocationManager.authorizationStatus() != .AuthorizedWhenInUse {
+            if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
                 locationManager.requestWhenInUseAuthorization()
             }else{
                 
@@ -196,7 +217,7 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         return locationManager.location!
     }
     
-    func getAddressFromCllocation(currentLocation: CLLocation){
+    func getAddressFromCllocation(_ currentLocation: CLLocation){
         
         geocoder.reverseGeocodeLocation(currentLocation) { (placemark, error) in
             
@@ -214,16 +235,15 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
         
     }
     
-    func getWeatherData(lat: Double, long: Double){
+    func getWeatherData(_ lat: Double, long: Double){
         
         // This is a pretty simple networking task, so the shared session will do.
-        let session = NSURLSession.sharedSession()
+        let session = URLSession.shared
         
-        let weatherRequestURL = NSURL(string: "\(baseURL)lat=\(lat)&lon=\(long)&APPID=\(API_KEY)")!
+        let weatherRequestURL = URL(string: "\(baseURL)lat=\(lat)&lon=\(long)&APPID=\(API_KEY)")!
         
-        // The data task retrieves the data.
-        let dataTask = session.dataTaskWithURL(weatherRequestURL) {
-            (data: NSData?, response: NSURLResponse?, error: NSError?) in
+        session.dataTask(with: weatherRequestURL) { data, response, error in
+            
             if let error = error {
                 // Case 1: Error
                 // We got some kind of error while trying to get data from the server.
@@ -233,8 +253,8 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
                 // Case 2: Success
                 // We got a response from the server!
                 
-                let dataString = String(data: data!, encoding: NSUTF8StringEncoding)
-//                print("Data:\n\(dataString!)")
+                let dataString = String(data: data!, encoding: String.Encoding.utf8)
+                //                print("Data:\n\(dataString!)")
                 let json = JSON(data:data!)
                 let temp = json["main"]["temp"].double
                 let locationName = json["name"].string
@@ -242,18 +262,17 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
                 print("wahahaha \(temp) \(locationName)")
                 
             }
-        }
+            }.resume()
+        // The data task retrieves the data.
         
-        // The data task is set up...launch it!
-        dataTask.resume()
         
     }
     
-    func updateWeatherAndLocation(location: String, temp: Double) {
+    func updateWeatherAndLocation(_ location: String, temp: Double) {
         
         let celsius = temp - 273.15
         
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+        DispatchQueue.main.async { () -> Void in
             
             self.lblTemperature.text = "\(celsius)°"
             self.lblCurrentLocation.text = location

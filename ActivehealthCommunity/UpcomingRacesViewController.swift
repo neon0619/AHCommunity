@@ -19,42 +19,42 @@ class UpcomingRacesViewController: UIViewController, UITableViewDataSource, UITa
         
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("myUpcomingRaceCell", forIndexPath: indexPath) as! MyUpcomingRaceCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "myUpcomingRaceCell", for: indexPath) as! MyUpcomingRaceCell
         
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 320
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         
             label.text = "My Upcoming Races"
             label.frame.size = CGSize()
-            label.textAlignment = .Center
-            label.textColor = UIColor.whiteColor()
+            label.textAlignment = .center
+            label.textColor = UIColor.white
             label.backgroundColor = UIColor(netHex: 0xFF9310)
         
         return label
         
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
     }
@@ -67,6 +67,6 @@ class UpcomingRacesViewController: UIViewController, UITableViewDataSource, UITa
         
         let upcomingRacesNib = UINib(nibName: "MyUpcomingRacellCell", bundle: nil)
         
-        self.tableView.registerNib(upcomingRacesNib, forCellReuseIdentifier: "myUpcomingRaceCell")
+        self.tableView.register(upcomingRacesNib, forCellReuseIdentifier: "myUpcomingRaceCell")
     }
 }

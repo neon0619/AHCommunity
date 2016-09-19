@@ -20,19 +20,19 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         // Do any additional setup after loading the view.
     }
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 4
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("inboxCell", forIndexPath: indexPath) as! InboxCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "inboxCell", for: indexPath) as! InboxCell
         
         cell.lblSubject.text = "Coach Analysis"
         cell.lblSender.text = "Coach Ani De Leon"
@@ -44,28 +44,28 @@ class InboxViewController: UIViewController, UITableViewDelegate, UITableViewDat
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 150
     }
     
-    @IBAction func status(sender: AnyObject) {
+    @IBAction func status(_ sender: AnyObject) {
         
-        let statusAlertController = storyboard!.instantiateViewControllerWithIdentifier("statusAlertController") as! StatusViewController
-        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let statusAlertController = storyboard!.instantiateViewController(withIdentifier: "statusAlertController") as! StatusViewController
+        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
         statusAlertController.preferredContentSize = CGSize(width: 200, height: statusAlertController.sportsList.count * 58)
         let popOver = statusAlertController.popoverPresentationController
         popOver?.delegate = self
         popOver?.sourceView = self.view
         popOver?.sourceRect = CGRect(x: (self.navigationController?.navigationBar.frame.origin.x)! + 370, y: (self.navigationController?.navigationBar.frame.origin.y)! + 20, width: 10, height: 10)
-        self.presentViewController(statusAlertController, animated: true, completion: nil)
+        self.present(statusAlertController, animated: true, completion: nil)
 
     }
     
-    @IBAction func sleepTimer(sender: AnyObject) {
+    @IBAction func sleepTimer(_ sender: AnyObject) {
     }
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
-        return .None
+        return .none
     }
 }

@@ -19,12 +19,12 @@ class MenuHeaderCell: UITableViewCell {
       
         userImage.layer.borderWidth = 1
         userImage.layer.masksToBounds = false
-        userImage.layer.borderColor = UIColor.blackColor().CGColor
+        userImage.layer.borderColor = UIColor.black.cgColor
         userImage.layer.cornerRadius = userImage.frame.height/2
         userImage.clipsToBounds = true
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

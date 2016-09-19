@@ -13,7 +13,7 @@ class SideMenuContainer: SideMenuController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        performSegueWithIdentifier("showHome", sender: nil)
-        performSegueWithIdentifier("containSideMenu", sender: nil)
+        performSegue(withIdentifier: "showHome", sender: nil)
+        performSegue(withIdentifier: "containSideMenu", sender: nil)
     }
 }

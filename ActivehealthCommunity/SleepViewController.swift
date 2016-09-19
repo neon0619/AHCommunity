@@ -18,19 +18,19 @@ class SleepViewController: UIViewController, UITableViewDataSource, UITableViewD
         // Do any additional setup after loading the view.
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("sleepCell", forIndexPath: indexPath) as! SleepCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "sleepCell", for: indexPath) as! SleepCell
         
         cell.lblDescription.text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
         cell.ImageView.image = UIImage(named: "placeholder6")
@@ -39,7 +39,7 @@ class SleepViewController: UIViewController, UITableViewDataSource, UITableViewD
         return cell
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         return 300
     }
@@ -51,7 +51,7 @@ class SleepViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let NutritionCell = UINib(nibName: "SleepCell", bundle: nil)
         
-        self.tableView.registerNib(NutritionCell, forCellReuseIdentifier: "sleepCell")
+        self.tableView.register(NutritionCell, forCellReuseIdentifier: "sleepCell")
     }
     
     

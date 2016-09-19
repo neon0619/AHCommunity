@@ -10,8 +10,8 @@ import UIKit
 
 @objc
 protocol MainViewControllerDelegate {
-    optional func toggleLeftPanel()
-    optional func collapseSidePanels()
+    @objc optional func toggleLeftPanel()
+    @objc optional func collapseSidePanels()
 }
 
 
@@ -33,7 +33,7 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     var currentIndex: Int?
     var currentController: UIViewController?
     
-    private var pendingIndex: Int?
+    fileprivate var pendingIndex: Int?
     
     
     
@@ -41,32 +41,32 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
                
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let page1: UIViewController! = storyboard.instantiateViewControllerWithIdentifier("ahcPointsController")
-        let page2: UIViewController! = storyboard.instantiateViewControllerWithIdentifier("myPlanProgressController")
-        let page3: UIViewController! = storyboard.instantiateViewControllerWithIdentifier("myUpcomingRaceController")
-        let page4: UIViewController! = storyboard.instantiateViewControllerWithIdentifier("communityPollsController")
+        let page1: UIViewController! = storyboard.instantiateViewController(withIdentifier: "ahcPointsController")
+        let page2: UIViewController! = storyboard.instantiateViewController(withIdentifier: "myPlanProgressController")
+        let page3: UIViewController! = storyboard.instantiateViewController(withIdentifier: "myUpcomingRaceController")
+        let page4: UIViewController! = storyboard.instantiateViewController(withIdentifier: "communityPollsController")
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
         pages.append(page4)
         
-        pageContainer = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageContainer.delegate = self
         pageContainer.dataSource = self
-        pageContainer.setViewControllers([page1], direction: UIPageViewControllerNavigationDirection.Forward, animated: false, completion: nil)
+        pageContainer.setViewControllers([page1], direction: UIPageViewControllerNavigationDirection.forward, animated: false, completion: nil)
         
         // Add it to the view
         view.addSubview(pageContainer.view)
         
         // Configure our custom pageControl
-        view.bringSubviewToFront(pageControl)
+        view.bringSubview(toFront: pageControl)
         pageControl.numberOfPages = pages.count
         pageControl.currentPage = 0
         
         
     }
     
-    @IBAction func openSlider(sender: AnyObject) {
+    @IBAction func openSlider(_ sender: AnyObject) {
         
         delegate?.toggleLeftPanel!()
     }
@@ -109,9 +109,9 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
 //        }
 //    }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         
-        let currentIndex = pages.indexOf(viewController)!
+        let currentIndex = pages.index(of: viewController)!
         if currentIndex == 0 {
             return nil
         }
@@ -119,9 +119,9 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         return pages[previousIndex]
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         
-        let currentIndex = pages.indexOf(viewController)!
+        let currentIndex = pages.index(of: viewController)!
         if currentIndex == pages.count-1 {
             return nil
         }
@@ -129,12 +129,12 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         return pages[nextIndex]
     }
     
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         
-        pendingIndex = pages.indexOf(pendingViewControllers.first!)
+        pendingIndex = pages.index(of: pendingViewControllers.first!)
     }
     
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
             
             currentIndex = pendingIndex
@@ -144,38 +144,38 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
         }
     }
     
-    @IBAction func sleepTimer(sender: AnyObject) {
+    @IBAction func sleepTimer(_ sender: AnyObject) {
         
      
     }
     
-    @IBAction func status(sender: AnyObject) {
+    @IBAction func status(_ sender: AnyObject) {
         
-        let statusAlertController = storyboard!.instantiateViewControllerWithIdentifier("statusAlertController") as! StatusViewController
-        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.Popover
+        let statusAlertController = storyboard!.instantiateViewController(withIdentifier: "statusAlertController") as! StatusViewController
+        statusAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
         statusAlertController.preferredContentSize = CGSize(width: 200, height: statusAlertController.sportsList.count * 58)
         let popOver = statusAlertController.popoverPresentationController
         popOver?.delegate = self
         popOver?.sourceView = self.view
         popOver?.sourceRect = CGRect(x: (self.navigationController?.navigationBar.frame.origin.x)! + 370, y: (self.navigationController?.navigationBar.frame.origin.y)! + 20, width: 10, height: 10)
-        self.presentViewController(statusAlertController, animated: true, completion: nil)
+        self.present(statusAlertController, animated: true, completion: nil)
 
     }
     
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationCount(for pageViewController: UIPageViewController) -> Int {
         
         return pages.count
     }
     
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
+    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
         
         return 0
     }
     
     
-    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         // Return no adaptive presentation style, use default presentation behaviour
-        return .None
+        return .none
     }
     
     

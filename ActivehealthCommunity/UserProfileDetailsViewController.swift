@@ -22,7 +22,7 @@ class UserProfileDetailsViewController: FormViewController  {
             }
             
             +++ Section("Personal Info")                { section in
-                var header = HeaderFooterView<ProfileHeaderView>(HeaderFooterProvider.NibFile(name: "ProfileHeaderView", bundle: nil))
+                var header = HeaderFooterView<ProfileHeaderView>(HeaderFooterProvider.nibFile(name: "ProfileHeaderView", bundle: nil))
                 header.height = {50}
                 
                 header.onSetupView = { view, _ in
@@ -49,7 +49,7 @@ class UserProfileDetailsViewController: FormViewController  {
                 print(row.value)
             }).onPresent({ (_, to) in
                 
-                to.view.tintColor = UIColor.blueColor()
+                to.view.tintColor = UIColor.blue
             })
             
             <<< IntRow() {

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class ProgressView: UIView {
+class ProgressView: UIView, CAAnimationDelegate {
     
-    private let progressLayer: CAShapeLayer = CAShapeLayer()
-    private let progressLayerWhite : CAShapeLayer = CAShapeLayer()
-    private var timer = NSTimer()
-    private var progressLabel: UILabel
-    private var startingPercentage = 0.0
-    private var currentProgressPercentage: CGFloat = 0.0
-    private var progressType = ""
+    fileprivate let progressLayer: CAShapeLayer = CAShapeLayer()
+    fileprivate let progressLayerWhite : CAShapeLayer = CAShapeLayer()
+    fileprivate var timer = Timer()
+    fileprivate var progressLabel: UILabel
+    fileprivate var startingPercentage = 0.0
+    fileprivate var currentProgressPercentage: CGFloat = 0.0
+    fileprivate var progressType = ""
     
     
     
@@ -37,29 +37,29 @@ class ProgressView: UIView {
         //        createLabel()
     }
     
-    func createLabel(textColor : UIColor) {
-        progressLabel = UILabel(frame: CGRectMake(0.0, 0.0, CGRectGetWidth(frame), 60.0))
+    func createLabel(_ textColor : UIColor) {
+        progressLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: 60.0))
         progressLabel.textColor = textColor
-        progressLabel.textAlignment = .Center
+        progressLabel.textAlignment = .center
         progressLabel.text = "0%"
         progressLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 20.0)
         progressLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(progressLabel)
         
-        addConstraint(NSLayoutConstraint(item: progressLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0.0))
-        addConstraint(NSLayoutConstraint(item: progressLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: progressLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0))
+        addConstraint(NSLayoutConstraint(item: progressLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
     }
     
-    func createProgressLayer(strokeColor : CGColor, strokeColor2 : CGColor, lineWidth : CGFloat, lineWidth2 : CGFloat, lineCap : String) {
+    func createProgressLayer(_ strokeColor : CGColor, strokeColor2 : CGColor, lineWidth : CGFloat, lineWidth2 : CGFloat, lineCap : String) {
         
         let startAngle = CGFloat(M_PI + M_PI_2)
         let endAngle = CGFloat(M_PI * 3 + M_PI_2)
-        let centerPoint = CGPointMake(CGRectGetWidth(bounds)/2, CGRectGetHeight(bounds)/2)
-        let radius = CGRectGetWidth(bounds)/2 - 5
+        let centerPoint = CGPoint(x: bounds.width/2, y: bounds.height/2)
+        let radius = bounds.width/2 - 5
         
         //        let gradientMaskLayer = gradientMask()
-        progressLayer.path = UIBezierPath(arcCenter:centerPoint, radius: radius , startAngle:startAngle, endAngle:endAngle, clockwise: true).CGPath
-        progressLayer.backgroundColor = UIColor.clearColor().CGColor
+        progressLayer.path = UIBezierPath(arcCenter:centerPoint, radius: radius , startAngle:startAngle, endAngle:endAngle, clockwise: true).cgPath
+        progressLayer.backgroundColor = UIColor.clear.cgColor
         progressLayer.fillColor = nil
         progressLayer.strokeColor = strokeColor
         progressLayer.lineWidth = lineWidth
@@ -67,8 +67,8 @@ class ProgressView: UIView {
         progressLayer.strokeEnd = 0.0
         progressLayer.lineCap = lineCap
         
-        progressLayerWhite.path = UIBezierPath(arcCenter: centerPoint, radius: radius, startAngle: startAngle,endAngle:endAngle, clockwise: true).CGPath
-        progressLayerWhite.fillColor = UIColor.clearColor().CGColor
+        progressLayerWhite.path = UIBezierPath(arcCenter: centerPoint, radius: radius, startAngle: startAngle,endAngle:endAngle, clockwise: true).cgPath
+        progressLayerWhite.fillColor = UIColor.clear.cgColor
         progressLayerWhite.strokeColor = strokeColor2
         progressLayerWhite.lineWidth = lineWidth2
         
@@ -78,14 +78,14 @@ class ProgressView: UIView {
         
     }
     
-    private func gradientMask() -> CAGradientLayer {
+    fileprivate func gradientMask() -> CAGradientLayer {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = bounds
         
         gradientLayer.locations = [0.0, 0.0]
         
-        let colorTop: AnyObject = UIColor(red: 255.0/255.0, green: 213.0/255.0, blue: 63.0/255.0, alpha: 1.0).CGColor
-        let colorBottom: AnyObject = UIColor(red: 255.0/255.0, green: 198.0/255.0, blue: 5.0/255.0, alpha: 1.0).CGColor
+        let colorTop: AnyObject = UIColor(red: 255.0/255.0, green: 213.0/255.0, blue: 63.0/255.0, alpha: 1.0).cgColor
+        let colorBottom: AnyObject = UIColor(red: 255.0/255.0, green: 198.0/255.0, blue: 5.0/255.0, alpha: 1.0).cgColor
         let arrayOfColors: [AnyObject] = [colorTop, colorBottom]
         gradientLayer.colors = arrayOfColors
         
@@ -98,7 +98,7 @@ class ProgressView: UIView {
         progressLabel.text = "Load content"
     }
     
-    func animateProgressView(currentProgressPercentage : CGFloat, progressType: String) {
+    func animateProgressView(_ currentProgressPercentage : CGFloat, progressType: String) {
         self.currentProgressPercentage = currentProgressPercentage
         self.progressType = progressType
         
@@ -110,10 +110,10 @@ class ProgressView: UIView {
         animation.toValue = CGFloat(currentProgressPercentage / 100)
         animation.duration = 1.0
         animation.delegate = self
-        animation.removedOnCompletion = false
-        animation.additive = true
+        animation.isRemovedOnCompletion = false
+        animation.isAdditive = true
         animation.fillMode = kCAFillModeForwards
-        progressLayer.addAnimation(animation, forKey: "strokeEnd")
+        progressLayer.add(animation, forKey: "strokeEnd")
         
     }
     
@@ -128,14 +128,14 @@ class ProgressView: UIView {
     //        }
     //    }
     
-    override func animationDidStart(anim: CAAnimation) {
+     func animationDidStart(_ anim: CAAnimation) {
         
         startingPercentage = 0.0
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: #selector(ProgressView.updateProgressViewLabelWithProgress(_:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ProgressView.updateProgressViewLabelWithProgress(_:)), userInfo: nil, repeats: true)
     }
     
-    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-        
+     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+
         timer.invalidate()
         if progressType == "percentage" {
             progressLabel.text = NSString(format: "%.0f %@", currentProgressPercentage , "%") as String
@@ -145,7 +145,7 @@ class ProgressView: UIView {
     }
     
     
-    func updateProgressViewLabelWithProgress(percent: Float) {
+    func updateProgressViewLabelWithProgress(_ percent: Float) {
         startingPercentage += (0.01 * 100)
         if progressType == "percentage" {
             progressLabel.text = NSString(format: "%.0f %@", startingPercentage , "%") as String
