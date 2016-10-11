@@ -99,10 +99,11 @@ class TeamProfileViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-          let label = LabelWithInsets()
+        
+        let label = LabelWithInsets()
         
         if section == 1 {
-          
+            
             label.text = "Team Captain: Jade Lapuz"
             label.frame.size = CGSize()
             label.textColor = UIColor.white
@@ -110,11 +111,11 @@ class TeamProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
         else if section == 2{
+            
             label.text = "Team Members: Lapuz Jade"
             label.frame.size = CGSize()
             label.textColor = UIColor.white
             label.backgroundColor = UIColor(netHex: 0xFF9310)
-            
         }
         else {
             

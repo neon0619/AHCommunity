@@ -8,65 +8,48 @@
 
 import UIKit
 
-class MentorsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
+class MentorsViewController: UIViewController,UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
     
     @IBOutlet var navBar: UINavigationBar!
-    @IBOutlet var tableView: UITableView!
+    @IBOutlet var swiftPages: SwiftPages!
     
     var interactor:Interactor? = nil
-    
-    let profileDetails: Array<ProfileDetails> = [ProfileDetails(detailsName: "Email", details: "sample@gmail.com"),ProfileDetails(detailsName: "Gender", details: "Male"),ProfileDetails(detailsName: "Age", details: "35"), ProfileDetails(detailsName: "Location", details: "Makati"), ProfileDetails(detailsName: "Sports", details: "Track and Field")]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadNibs()
+        
         
         self.navBar.setBackgroundImage(UIImage(), for: .default)
         self.navBar.shadowImage = UIImage()
         self.navBar.isTranslucent = true
+        
+        let VCIDs = ["userProfileController","myPreviouseRacesController"]
+        let buttonImages = [
+            UIImage(named:"coach_profile_icon")!,
+            UIImage(named:"coach_bio_profile_icon")!,
+        ]
 
-        // Do any additional setup after loading the view.
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         
-        return profileDetails.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let VCsInstanciated = VCIDs.map({ storyboard.instantiateViewController(withIdentifier: $0) })
+        //        VCsInstanciated[0].view.frame = CGRectMake(0, 300, self.view.frame.width, 500)
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! ProfileDetailsCell
         
-        cell.lblDetailsName.text = profileDetails[(indexPath as NSIndexPath).row].detailsName
-        cell.lblDetailsName.textColor = UIColor(netHex: 0xFF9310)
-        cell.lblDetails.text = profileDetails[(indexPath as NSIndexPath).row].details
         
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        // Sample customization
+        swiftPages.initializeWithVCsInstanciatedArrayAndButtonImagesArray(VCsArray: VCsInstanciated, buttonImagesArray: buttonImages)
+        //swiftPagesView.initializeWithVCIDsArrayAndButtonImagesArray([], buttonImagesArray: buttonImages)
+        swiftPages.setTopBarBackground(color: UIColor(patternImage: UIImage(named: "placeholder7")!))
+        //        swiftPagesView.setTopBarBackground(UIColor.cl)
+        swiftPages.setAnimatedBarColor(color: UIColor(red: 255/255, green: 250/255, blue: 205/255, alpha: 1.0))
+        swiftPages.setContainerViewBackground(color: UIColor.lightGray)
         
-        let headerView = CoachHeaderCell.fromNib()
+        self.navBar.setBackgroundImage(UIImage(), for: .default)
+        self.navBar.shadowImage = UIImage()
+        self.navBar.isTranslucent = true
         
-        headerView.imageCoach.image = UIImage(named:"placeholder7")
-        
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        
-        return 250
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        return 64
     }
     
     
@@ -116,15 +99,6 @@ class MentorsViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     @IBAction func sleepTimer(_ sender: AnyObject) {
-    }
-    func loadNibs() {
-        
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        let detailsCell = UINib(nibName: "ProfileDetailsCell", bundle: nil)
-        
-        self.tableView.register(detailsCell, forCellReuseIdentifier: "detailsCell")
         
     }
     

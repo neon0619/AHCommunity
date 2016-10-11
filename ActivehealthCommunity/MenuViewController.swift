@@ -19,16 +19,19 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     var delegate: MenuViewControllerDelegate?
     
-    let segues = ["showHome","showCommunity","showMyRacePlan","toMyRewards","toMyRewards","toMyRewards","toInbox","toInbox"]
+    let segues = ["showHome","showCommunity","toUpcomingEvents","showMyRacePlan","toHelp","toHelp","toMyRewards","toHelp","toInbox","toHelp","toAbout","toHelp"]
     let menu: Array<Menu>! =  [Menu(title: "Home", image: UIImage(named: "home")),
     Menu(title: "My Community", image: UIImage(named: "my_community")),
+    Menu(title: "Upcoming Events", image: UIImage(named: "my_community")),
     Menu(title: "My Race Plan", image: UIImage(named: "my_race_plan")),
     Menu(title: "My Training Diary", image: UIImage(named: "my_training_diary")),
     Menu(title: "My Races", image: UIImage(named: "my_races")),
     Menu(title: "My Rewards", image: UIImage(named: "my_reward")),
     Menu(title: "My Team", image: UIImage(named: "my_team")),
     Menu(title: "Inbox", image: UIImage(named: "inbox")),
-    Menu(title: "Log out", image: UIImage(named: "logout")),
+    Menu(title: "Help", image: UIImage(named: "my_community")),
+    Menu(title: "About", image: UIImage(named: "my_community")),
+    Menu(title: "Log out", image: UIImage(named: "logout"))
     ]
     
     
@@ -90,7 +93,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! MenuHeaderCell
         headerCell.backgroundColor = UIColor(netHex: 0x0A1D37)
-        headerCell.editProfile.addTarget(self, action: #selector(MenuViewController.buttonClicked(_:)), for: UIControlEvents.touchUpInside)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(MenuViewController.buttonClicked(_:)))
+        headerCell.userImage.addGestureRecognizer(tap)
+        headerCell.userImage.isUserInteractionEnabled = true
         headerCell.userName.textColor = UIColor.white
         headerCell.userName.text = "Jade Lapuz"
         
@@ -102,8 +107,9 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         return 300
     }
     
-    func buttonClicked(_ sender: UIButton) {
+    func buttonClicked(_ sender: UITapGestureRecognizer) {
        
+        print("hmm")
         let vc = storyboard?.instantiateViewController(withIdentifier: "profileController") as! ProfileViewController
         show(vc, sender: self)
         

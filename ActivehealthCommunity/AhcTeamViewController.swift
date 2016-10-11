@@ -11,7 +11,7 @@ import UIKit
 class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
     
     @IBOutlet var tableView: UITableView!
-    
+    @IBOutlet var btnCreateTeam: UIButton!
     let interactor = Interactor()
     
     override func viewDidLoad() {
@@ -19,6 +19,9 @@ class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewD
         registerNibs()
         
         tableView.separatorStyle = .none
+        
+        btnCreateTeam.backgroundColor = UIColor.green
+        btnCreateTeam.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 100)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,13 +58,13 @@ class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 300
     }
     
-    
     func buttonClicked(_ sender: UIButton) {
         let buttonRow = sender.tag
         //        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         //        let vc = storyboard.instantiateViewControllerWithIdentifier("teamProfileController") as! TeamProfileViewController
         //        showViewController(vc, sender: nil)
         performSegue(withIdentifier: "toTeamProfileController", sender: self)
+        
         switch buttonRow {
         case 0:
             
@@ -92,6 +95,14 @@ class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+
+    @IBAction func createTeam(_ sender: AnyObject) {
+        
+        DispatchQueue.main.async {
+            
+            self.performSegue(withIdentifier: "toTeamForm", sender: nil)
+        }
+    }
     
     @IBAction func unwindToViewController (_ sender: UIStoryboardSegue){
         //        txtUserType.enabled = true

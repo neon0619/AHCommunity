@@ -28,7 +28,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSFontAttributeName: UIFont(name: "Lucida Grande", size: 17)!,NSForegroundColorAttributeName: UIColor.white
         ]
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-//
+//        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
+//        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0))
+//        view.backgroundColor = UIColor(netHex: 0x0A1D37)
+//        self.window?.rootViewController?.view.addSubview(view)
 //        guard  let statusBar = (UIApplication.shared.value(forKey: "statusBarWindow") as AnyObject).value(forKey: "statusBar") as? UIView else {
 //            return false
 //        }

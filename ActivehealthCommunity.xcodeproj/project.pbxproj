@@ -24,6 +24,13 @@
 		B7347B861D6D23A700250B26 /* ProfileDetailsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7347B851D6D23A700250B26 /* ProfileDetailsCell.xib */; };
 		B7347B881D6D278300250B26 /* ProfileDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7347B871D6D278300250B26 /* ProfileDetails.swift */; };
 		B7347B8A1D6D299600250B26 /* CoachProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7347B891D6D299600250B26 /* CoachProfileController.swift */; };
+		B76EE46D1DA6326B0043B1C0 /* AhcExpertsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE46C1DA6326B0043B1C0 /* AhcExpertsViewController.swift */; };
+		B76EE46F1DA7AE9C0043B1C0 /* CreateTeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE46E1DA7AE9A0043B1C0 /* CreateTeamViewController.swift */; };
+		B76EE4711DA7B2860043B1C0 /* AhcExpertProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE4701DA7B2860043B1C0 /* AhcExpertProfileViewController.swift */; };
+		B76EE4731DA7B7D00043B1C0 /* MentorSessionTabItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE4721DA7B7CF0043B1C0 /* MentorSessionTabItemViewController.swift */; };
+		B76EE4761DA7BA900043B1C0 /* MentorSessionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE4751DA7BA900043B1C0 /* MentorSessionsCell.swift */; };
+		B76EE4781DA7C8F90043B1C0 /* ActivityDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE4771DA7C8F90043B1C0 /* ActivityDetailsViewController.swift */; };
+		B76EE47A1DA7CAFE0043B1C0 /* GeneralDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76EE4791DA7CAFE0043B1C0 /* GeneralDetailsCell.swift */; };
 		B7998F8F1D46FB4900064B8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7998F8E1D46FB4900064B8F /* AppDelegate.swift */; };
 		B7998F911D46FB4900064B8F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7998F901D46FB4900064B8F /* ViewController.swift */; };
 		B7998F941D46FB4900064B8F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B7998F921D46FB4900064B8F /* Main.storyboard */; };
@@ -123,6 +130,13 @@
 		B7347B851D6D23A700250B26 /* ProfileDetailsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileDetailsCell.xib; sourceTree = "<group>"; };
 		B7347B871D6D278300250B26 /* ProfileDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileDetails.swift; sourceTree = "<group>"; };
 		B7347B891D6D299600250B26 /* CoachProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoachProfileController.swift; sourceTree = "<group>"; };
+		B76EE46C1DA6326B0043B1C0 /* AhcExpertsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AhcExpertsViewController.swift; sourceTree = "<group>"; };
+		B76EE46E1DA7AE9A0043B1C0 /* CreateTeamViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateTeamViewController.swift; sourceTree = "<group>"; };
+		B76EE4701DA7B2860043B1C0 /* AhcExpertProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AhcExpertProfileViewController.swift; sourceTree = "<group>"; };
+		B76EE4721DA7B7CF0043B1C0 /* MentorSessionTabItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorSessionTabItemViewController.swift; sourceTree = "<group>"; };
+		B76EE4751DA7BA900043B1C0 /* MentorSessionsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentorSessionsCell.swift; sourceTree = "<group>"; };
+		B76EE4771DA7C8F90043B1C0 /* ActivityDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailsViewController.swift; sourceTree = "<group>"; };
+		B76EE4791DA7CAFE0043B1C0 /* GeneralDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralDetailsCell.swift; sourceTree = "<group>"; };
 		B7998F8B1D46FB4800064B8F /* ActivehealthCommunity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ActivehealthCommunity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7998F8E1D46FB4900064B8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7998F901D46FB4900064B8F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -229,6 +243,7 @@
 		B7347B531D6AD29A00250B26 /* AhcOptions */ = {
 			isa = PBXGroup;
 			children = (
+				B76EE46B1DA631F10043B1C0 /* AhcExperts */,
 				B7D511A51D6D383600219D6E /* AhcMentors */,
 				B7347B7A1D6D1D5E00250B26 /* AhcCoaches */,
 				B7DB722C1D546D1D00A4D3CF /* AhcTeam */,
@@ -317,6 +332,23 @@
 				B7347B851D6D23A700250B26 /* ProfileDetailsCell.xib */,
 			);
 			name = ProfileDetailsXib;
+			sourceTree = "<group>";
+		};
+		B76EE46B1DA631F10043B1C0 /* AhcExperts */ = {
+			isa = PBXGroup;
+			children = (
+				B76EE46C1DA6326B0043B1C0 /* AhcExpertsViewController.swift */,
+				B76EE4701DA7B2860043B1C0 /* AhcExpertProfileViewController.swift */,
+			);
+			name = AhcExperts;
+			sourceTree = "<group>";
+		};
+		B76EE4741DA7BA740043B1C0 /* MentorSessions */ = {
+			isa = PBXGroup;
+			children = (
+				B76EE4751DA7BA900043B1C0 /* MentorSessionsCell.swift */,
+			);
+			name = MentorSessions;
 			sourceTree = "<group>";
 		};
 		B7998F821D46FB4700064B8F = {
@@ -510,6 +542,8 @@
 				B7D511C51D6D661F00219D6E /* TrainingViewController.swift */,
 				B7D511C71D6D675D00219D6E /* GearViewController.swift */,
 				B7D511C91D6D67CC00219D6E /* SleepViewController.swift */,
+				B76EE4771DA7C8F90043B1C0 /* ActivityDetailsViewController.swift */,
+				B76EE4791DA7CAFE0043B1C0 /* GeneralDetailsCell.swift */,
 			);
 			name = "My Race Prep Plan";
 			sourceTree = "<group>";
@@ -614,6 +648,7 @@
 				B7DB72101D51B54800A4D3CF /* ClassesTabItemViewController.swift */,
 				B7DB72141D51B56600A4D3CF /* FeaturedVideoTabItemViewController.swift */,
 				B7DB72121D51B55800A4D3CF /* FeaturedStoryTabItemViewController.swift */,
+				B76EE4721DA7B7CF0043B1C0 /* MentorSessionTabItemViewController.swift */,
 			);
 			name = "My Community";
 			sourceTree = "<group>";
@@ -633,6 +668,7 @@
 			children = (
 				B7DB722A1D54609F00A4D3CF /* AhcTeamViewController.swift */,
 				B7DB722D1D546D5F00A4D3CF /* TeamProfileViewController.swift */,
+				B76EE46E1DA7AE9A0043B1C0 /* CreateTeamViewController.swift */,
 			);
 			name = AhcTeam;
 			sourceTree = "<group>";
@@ -640,6 +676,7 @@
 		B7F9F65E1D59740D00E04AED /* TabCellsXib */ = {
 			isa = PBXGroup;
 			children = (
+				B76EE4741DA7BA740043B1C0 /* MentorSessions */,
 				B7A4D7D71D76A5EF00816D13 /* FeaturedVideoCell */,
 				B7F9F65F1D597D8100E04AED /* ClassesCell.swift */,
 				B7F9F6621D597DA800E04AED /* ClassesCell.xib */,
@@ -842,14 +879,17 @@
 				B7DB72131D51B55800A4D3CF /* FeaturedStoryTabItemViewController.swift in Sources */,
 				B7A4D80F1D7FB08C00816D13 /* UpcomingRacesViewController.swift in Sources */,
 				B7D511C61D6D661F00219D6E /* TrainingViewController.swift in Sources */,
+				B76EE47A1DA7CAFE0043B1C0 /* GeneralDetailsCell.swift in Sources */,
 				B7F9F66A1D5BFFCF00E04AED /* Classes.swift in Sources */,
 				B7F9F6661D5983BE00E04AED /* FeaturedStoryCell.swift in Sources */,
 				B7D511BD1D6D5D9100219D6E /* NutritionViewController.swift in Sources */,
+				B76EE46F1DA7AE9C0043B1C0 /* CreateTeamViewController.swift in Sources */,
 				B7DB72021D4F0A3D00A4D3CF /* MyPlanProgressViewController.swift in Sources */,
 				B7998F911D46FB4900064B8F /* ViewController.swift in Sources */,
 				B7A4D7DA1D76A68200816D13 /* FeaturedVideoCell.swift in Sources */,
 				B7D511E01D6D8E3900219D6E /* MyRewardsViewController.swift in Sources */,
 				B7998FA51D47292800064B8F /* Extensions.swift in Sources */,
+				B76EE4731DA7B7D00043B1C0 /* MentorSessionTabItemViewController.swift in Sources */,
 				B7DB72281D545F6F00A4D3CF /* DismissAnimator.swift in Sources */,
 				B7998FAE1D4844F700064B8F /* MenuViewController.swift in Sources */,
 				B7347B6B1D6C25EA00250B26 /* AhcTeamLeaderCell.swift in Sources */,
@@ -859,8 +899,11 @@
 				B7DB72151D51B56600A4D3CF /* FeaturedVideoTabItemViewController.swift in Sources */,
 				B7998F8F1D46FB4900064B8F /* AppDelegate.swift in Sources */,
 				B7998FA81D47435000064B8F /* MainViewController.swift in Sources */,
+				B76EE4761DA7BA900043B1C0 /* MentorSessionsCell.swift in Sources */,
+				B76EE46D1DA6326B0043B1C0 /* AhcExpertsViewController.swift in Sources */,
 				B7347B731D6C2A3D00250B26 /* AhcTeamDescriptionCell.swift in Sources */,
 				B7A4D80A1D7FA5DB00816D13 /* MyUpcomingRaceCell.swift in Sources */,
+				B76EE4711DA7B2860043B1C0 /* AhcExpertProfileViewController.swift in Sources */,
 				B7D511CC1D6D702100219D6E /* InboxCell.swift in Sources */,
 				B7D511D91D6D826B00219D6E /* StatusCell.swift in Sources */,
 				B7D511AE1D6D429C00219D6E /* RacePrepPlanCell.swift in Sources */,
@@ -881,6 +924,7 @@
 				B7A435C51D8FCBB50028074F /* SwiftPages.swift in Sources */,
 				B7DB721E1D52F4A800A4D3CF /* Options.swift in Sources */,
 				B7DB71FC1D4EE8C300A4D3CF /* MenuHeaderCell.swift in Sources */,
+				B76EE4781DA7C8F90043B1C0 /* ActivityDetailsViewController.swift in Sources */,
 				B7D511A71D6D391C00219D6E /* AhcMentorsViewController.swift in Sources */,
 				B7DB720F1D51B53B00A4D3CF /* CommunityTabItemViewController.swift in Sources */,
 				B7D511D01D6D70DE00219D6E /* InboxViewController.swift in Sources */,

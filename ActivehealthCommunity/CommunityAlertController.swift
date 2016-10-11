@@ -19,7 +19,7 @@ class CommunityAlertController: UIViewController, UITableViewDelegate, UITableVi
     let interactor = Interactor()
     
     var delegate : CommunityAlertDelegate?
-    var options : Array<Options> = [Options(title: "AHC TEAM", image: "ahc_team"),Options(title: "AHC COACHES", image: "ahc_coaches"),Options(title: "AHC MENTORS", image: "ahc_mentors")]
+    var options : Array<Options> = [Options(title: "AHC TEAM", image: "ahc_team"),Options(title: "AHC COACHES", image: "ahc_coaches"),Options(title: "AHC MENTORS", image: "ahc_mentors"),Options(title: "AHC EXPERTS", image: "ahc_mentors")]
 
 
     

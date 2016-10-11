@@ -19,11 +19,12 @@ class ProfileViewController: UIViewController {
         
          automaticallyAdjustsScrollViewInsets = false
         
-        let VCIDs = ["userProfileController","myPreviouseRacesController","upcomingRaceController"]
+        let VCIDs = ["userProfileController","myPreviouseRacesController","upcomingRaceController","achievementsController"]
         let buttonImages = [
-            UIImage(named:"bio_icon")!,
-            UIImage(named:"bio_icon")!,
-            UIImage(named:"bio_icon")!
+            UIImage(named:"profile_icon_1")!,
+            UIImage(named:"previous_race_icon")!,
+            UIImage(named:"upcoming_race_icon")!,
+            UIImage(named:"achievements_icon")!
         ]
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)

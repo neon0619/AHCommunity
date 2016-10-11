@@ -14,8 +14,7 @@ class MyRacePrepPlanViewController: UIViewController, UITableViewDataSource, UIT
     
     override func viewDidLoad() {
         
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        loadNibs()
         
     }
     
@@ -26,21 +25,58 @@ class MyRacePrepPlanViewController: UIViewController, UITableViewDataSource, UIT
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 4
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "racePlanCell", for: indexPath) as! RacePrepPlanCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "racePlanCell", for: indexPath) as! RacePlanCell
         
-        cell.lblTitle.text = "Run United \((indexPath as NSIndexPath).row + 1)"
+        cell.lblDay.text = "Day \((indexPath as NSIndexPath).row + 1)"
+        cell.lblDescription.text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim."
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toRacePlan", sender: self)
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let cellHeader = tableView.dequeueReusableCell(withIdentifier: "racePlanHeaderCell") as! RacePlanHeaderCellTableViewCell
+        
+        cellHeader.lblTitle.text = "Run United 1"
+        
+        return cellHeader
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        DispatchQueue.main.async {
+            
+            self.performSegue(withIdentifier: "toActivityDetails", sender: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 75
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        
+        return 54
+    }
+    
+    func loadNibs() {
+//        self.tabBar.delegate = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        let racePlanCell = UINib(nibName: "RacePlanCell", bundle: nil)
+        let headerCell = UINib(nibName: "RacePlanHeaderCellTableViewCell", bundle: nil)
+        
+        self.tableView.register(headerCell, forCellReuseIdentifier: "racePlanHeaderCell")
+        self.tableView.register(racePlanCell, forCellReuseIdentifier: "racePlanCell")
+    }
+
     
     @IBAction func status(_ sender: AnyObject) {
         

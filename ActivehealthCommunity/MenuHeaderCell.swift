@@ -12,11 +12,11 @@ class MenuHeaderCell: UITableViewCell {
 
     @IBOutlet var userImage: UIImageView!
     @IBOutlet var userName: UILabel!
-    @IBOutlet var editProfile: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
       
+        self.layoutIfNeeded()
         userImage.layer.borderWidth = 1
         userImage.layer.masksToBounds = false
         userImage.layer.borderColor = UIColor.black.cgColor

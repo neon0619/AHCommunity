@@ -10,6 +10,9 @@ import UIKit
 
 class RacePrepPlanCell: UITableViewCell {
     
+
+    @IBOutlet var rowImage: UIImageView!
+    @IBOutlet var lblType: UILabel!
     @IBOutlet var lblTitle: UILabel!
     
     override func awakeFromNib() {

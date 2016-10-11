@@ -128,15 +128,47 @@ class CommunityTabItemViewController: UIViewController, CLLocationManagerDelegat
             switch status {
             case "Resting":
                 
-                image = UIImage(named: "sleep_icon")!
+                image = UIImage(named: "map_resting")!
                 break;
             case "Swimming":
                 
-                image = UIImage(named: "training_icon")!
+                image = UIImage(named: "map_swimming")!
                 break;
             case "Running":
                 
-                image = UIImage(named: "nutrition_icon")!
+                image = UIImage(named: "map_running")!
+                break;
+            case "Badminton":
+                
+                image = UIImage(named: "map_badminton")!
+                break;
+            case "Basketball":
+                
+                image = UIImage(named: "map_basketball")!
+                break;
+            case "Biking":
+                
+                image = UIImage(named: "map_biking")!
+                break;
+            case "Resting":
+                
+                image = UIImage(named: "map_resting")!
+                break;
+            case "Soccer":
+                
+                image = UIImage(named: "map_soccer")!
+                break;
+            case "Volleyball":
+                
+                image = UIImage(named: "map_volleyball")!
+                break;
+            case "Working":
+                
+                image = UIImage(named: "map_working")!
+                break;
+            case "Workout":
+                
+                image = UIImage(named: "map_workout")!
                 break;
             default:
                 

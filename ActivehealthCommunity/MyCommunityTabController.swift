@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, CommunityAlertDelegate{
+class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate, CommunityAlertDelegate, MentorSessionDelegate{
     
     
     @IBOutlet var tabBar: UITabBar!
@@ -21,6 +21,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
     var viewController2: UIViewController?
     var viewController3: UIViewController?
     var viewController4: UIViewController?
+    var viewController5: MentorSessionTabItemViewController?
     
     var currentController: UIViewController?
     
@@ -96,6 +97,22 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             self.title = "Featured Video"
             self.view.insertSubview(viewController4!.view!, belowSubview: self.tabBar)
             break
+        case 5:
+            if currentController != nil {
+                removeController(currentController!)
+                currentController = nil
+            }
+            
+            if viewController5 == nil {
+                
+                viewController5 = storyboard!.instantiateViewController(withIdentifier: "mentorSessionsController") as! MentorSessionTabItemViewController
+                viewController5?.delegate = self
+                
+            }
+            self.title = "Mentor Sessions"
+            self.view.insertSubview(viewController5!.view!, belowSubview: self.tabBar)
+            break
+
         default:
             break
             
@@ -105,7 +122,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         case "My Community":
             communityAlertController = storyboard!.instantiateViewController(withIdentifier: "alertView") as! CommunityAlertController
             communityAlertController.modalPresentationStyle = UIModalPresentationStyle.popover
-            communityAlertController.preferredContentSize = CGSize(width: 200, height: 150)
+            communityAlertController.preferredContentSize = CGSize(width: 200, height: 180)
             let popOver = communityAlertController.popoverPresentationController
             popOver?.delegate = self
             popOver?.sourceView = self.view
@@ -123,7 +140,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
         switch index {
         case 0:
             let ahcTeam = storyboard?.instantiateViewController(withIdentifier: "ahcTeamController") as! AhcTeamViewController
-            ahcTeam.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
+            ahcTeam.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 110)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
@@ -131,7 +148,7 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             presentController(ahcTeam)
         case 1:
             let ahcCoaches = storyboard?.instantiateViewController(withIdentifier: "ahcCoachController") as! AhcCoachesViewController
-            ahcCoaches.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
+            ahcCoaches.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 110)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
@@ -139,12 +156,22 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
             presentController(ahcCoaches)
         case 2:
             let ahcMentors = storyboard?.instantiateViewController(withIdentifier: "ahcMentorController") as! AhcMentorsViewController
-            ahcMentors.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 120)
+            ahcMentors.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 110)
             if currentController != nil {
                 removeController(currentController!)
                 currentController = nil
             }
-            presentController(ahcMentors)        default:
+            presentController(ahcMentors)
+        case 3:
+            let ahcMentors = storyboard?.instantiateViewController(withIdentifier: "ahcExpertController") as! AhcExpertViewController
+            ahcMentors.view.frame = CGRect(x: 0, y: (self.navigationController?.navigationBar.frame.maxY)!, width: self.view.frame.width, height: self.view.frame.height - 110)
+            if currentController != nil {
+                removeController(currentController!)
+                currentController = nil
+            }
+            presentController(ahcMentors)
+            break
+        default:
             break
         }
     }
@@ -178,6 +205,14 @@ class MyCommunityTabController: UIViewController, UITabBarDelegate, UIPopoverPre
     
     func optionSelected(_ options: Options) {
         
+    }
+    
+    func joinMentorSession() {
+        
+        DispatchQueue.main.async {
+            
+            self.performSegue(withIdentifier: "toJoinSession", sender: nil)
+        }
     }
     
     

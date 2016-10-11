@@ -16,10 +16,6 @@ class UserProfileDetailsViewController: FormViewController  {
         form +++
             Section("Currently")
             
-            <<< TextRow(){
-                
-                $0.value = "Biking"
-            }
             
             +++ Section("Personal Info")                { section in
                 var header = HeaderFooterView<ProfileHeaderView>(HeaderFooterProvider.nibFile(name: "ProfileHeaderView", bundle: nil))
