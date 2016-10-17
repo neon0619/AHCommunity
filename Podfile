@@ -5,15 +5,18 @@
 
 target 'ActivehealthCommunity' do
 
-	pod 'Eureka',
-		:git => 'https://github.com/xmartlabs/Eureka.git',
-		:branch => 'Swift3'
+	pod 'Eureka', '~> 2.0.0-beta.1'
+
 
 	pod 'SwiftyJSON', 
 	:git => 'https://github.com/BaiduHiDeviOS/SwiftyJSON.git',
 	:branch => 'swift3'
 
 	pod 'SideMenuController', '~> 0.2.0'
+
+	pod 'Alamofire', '~> 4.0'
+
+	pod 'IBAnimatable'
 
 end
 

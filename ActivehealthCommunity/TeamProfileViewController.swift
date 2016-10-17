@@ -25,15 +25,11 @@ class TeamProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        
-        
         return 1
-        
         
     }
     
@@ -44,14 +40,7 @@ class TeamProfileViewController: UIViewController, UITableViewDelegate, UITableV
             
             cell.lblTeamDescriptions.text = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula"
             cell.lblTeamDescriptions.textColor = UIColor.white
-            cell.backgroundColor = UIColor(netHex: 0x0A1D37)
-            
-            return cell
-            
-            
-        }
-        else if (indexPath as NSIndexPath).section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "teamLeaderCell", for: indexPath) as! AhcTeamLeaderCell
+            cell.backgroundColor = UIColor(netHex: 0xFF9310)
             
             return cell
         }
@@ -81,21 +70,12 @@ class TeamProfileViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
-        let sectionHeight:CGFloat = 0
-        
-        if section != 0 {
-            
-            return 50
-        }
-        else {
-            
-        }
-        
-        return sectionHeight
+        return UITableViewAutomaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        
+        return 50
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

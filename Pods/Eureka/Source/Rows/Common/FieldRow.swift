@@ -74,9 +74,9 @@ open class FormatteableRow<Cell: CellType>: Row<Cell>, FormatterConformance wher
             guard let v = value else { return nil }
             guard let formatter = self.formatter else { return String(describing: v) }
             if (self.cell.textInput as? UIView)?.isFirstResponder == true {
-                return self.useFormatterDuringInput ? formatter.editingString(for: v as AnyObject) : String(describing: v)
+                return self.useFormatterDuringInput ? formatter.editingString(for: v) : String(describing: v)
             }
-            return formatter.string(for: v as AnyObject)
+            return formatter.string(for: v)
         }
     }
 
@@ -140,15 +140,15 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     
     public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationWillResignActive, object: nil, queue: nil){ [weak self] notification in
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive, object: nil, queue: nil){ [weak self] notification in
             guard let me = self else { return }
             me.titleLabel?.removeObserver(me, forKeyPath: "text")
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil){ [weak self] notification in
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil){ [weak self] notification in
             self?.titleLabel?.addObserver(self!, forKeyPath: "text", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
         }
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil, queue: nil){ [weak self] notification in
+        NotificationCenter.default.addObserver(forName: Notification.Name.UIContentSizeCategoryDidChange, object: nil, queue: nil){ [weak self] notification in
             self?.setNeedsUpdateConstraints()
         }
     }
@@ -162,9 +162,9 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         textField.removeTarget(self, action: nil, for: .allEvents)
         titleLabel?.removeObserver(self, forKeyPath: "text")
         imageView?.removeObserver(self, forKeyPath: "image")
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIContentSizeCategoryDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIContentSizeCategoryDidChange, object: nil)
     }
     
     open override func setup() {
@@ -194,7 +194,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         textField.text = row.displayValueFor?(row.value)
         textField.isEnabled = !row.isDisabled
         textField.textColor = row.isDisabled ? .gray : .black
-        textField.font = .preferredFont(forTextStyle: UIFontTextStyle.body)
+        textField.font = .preferredFont(forTextStyle: .body)
         if let placeholder = (row as? FieldRowConformance)?.placeholder {
             if let color = (row as? FieldRowConformance)?.placeholderColor {
                 textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: color])
@@ -212,7 +212,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
         return !row.isDisabled && textField.canBecomeFirstResponder
     }
     
-    open override func cellBecomeFirstResponder(_ direction: Direction) -> Bool {
+    open override func cellBecomeFirstResponder(withDirection: Direction) -> Bool {
         return textField.becomeFirstResponder()
     }
     
@@ -307,7 +307,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     private func displayValue(useFormatter: Bool) -> String? {
         guard let v = row.value else { return nil }
         if let formatter = (row as? FormatterConformance)?.formatter, useFormatter {
-            return textField.isFirstResponder ? formatter.editingString(for: v as AnyObject) : formatter.string(for: v as AnyObject)
+            return textField.isFirstResponder ? formatter.editingString(for: v) : formatter.string(for: v)
         }
         return String(describing: v)
     }
@@ -315,7 +315,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     //MARK: TextFieldDelegate
     
     open func textFieldDidBeginEditing(_ textField: UITextField) {
-        formViewController()?.beginEditing(self)
+        formViewController()?.beginEditing(of: self)
         formViewController()?.textInputDidBeginEditing(textField, cell: self)
         if let fieldRowConformance = row as? FormatterConformance, let _ = fieldRowConformance.formatter, fieldRowConformance.useFormatterOnDidBeginEditing ?? fieldRowConformance.useFormatterDuringInput {
             textField.text = displayValue(useFormatter: true)
@@ -325,7 +325,7 @@ open class _FieldCell<T> : Cell<T>, UITextFieldDelegate, TextFieldCell where T: 
     }
     
     open func textFieldDidEndEditing(_ textField: UITextField) {
-        formViewController()?.endEditing(self)
+        formViewController()?.endEditing(of: self)
         formViewController()?.textInputDidEndEditing(textField, cell: self)
         textFieldDidChange(textField)
         textField.text = displayValue(useFormatter: (row as? FormatterConformance)?.formatter != nil)

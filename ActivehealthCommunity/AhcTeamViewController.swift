@@ -35,7 +35,7 @@ class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 2
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -74,6 +74,19 @@ class AhcTeamViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let offsetY = self.tableView.contentOffset.y
+        for cell in self.tableView.visibleCells as! [AhcTeamCell] {
+            let x = cell.teamImage.frame.origin.x
+            let width = cell.teamImage.frame.width
+            let height = cell.teamImage.frame.height
+            let y = ((offsetY - cell.frame.origin.y) / height) * 25
+            cell.teamImage.frame = CGRect(x: x, y: y, width: width, height: height)
+            
+        }
     }
     func registerNibs(){
         

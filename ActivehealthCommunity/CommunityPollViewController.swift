@@ -11,25 +11,16 @@ import UIKit
 
 class CommunityPollViewController: UIViewController {
 
+    @IBOutlet weak var lblPollQuestion: UILabel!
+    @IBOutlet weak var pollImage1: UIImageView!
+    @IBOutlet weak var pollImage2: UIImageView!
+    @IBOutlet weak var pollChoice1: UILabel!
+    @IBOutlet weak var pollChoice2: UILabel!
+    @IBOutlet weak var pollVote1: UILabel!
+    @IBOutlet weak var pollVote2: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

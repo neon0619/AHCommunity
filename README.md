@@ -1,2 +1,0 @@
-# AHCommunity
-ActiveHealthCommunity

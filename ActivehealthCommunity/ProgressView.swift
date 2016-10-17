@@ -8,36 +8,60 @@
 
 import UIKit
 
+enum ProgressType: String {
+    case percentage = "percentage"
+    case timer = "timer"
+    
+}
 class ProgressView: UIView, CAAnimationDelegate {
     
     fileprivate let progressLayer: CAShapeLayer = CAShapeLayer()
     fileprivate let progressLayerWhite : CAShapeLayer = CAShapeLayer()
+    
+    fileprivate var outerStrokeColor: CGColor = UIColor.blue.cgColor
+    fileprivate var innerStrokeColor: CGColor = UIColor.white.cgColor
+    
+    fileprivate var outerStrokeLineWidth: CGFloat = 5.0
+    fileprivate var innerStrokeLineWidth: CGFloat = 5.0
+    
+    fileprivate var lineCap: String? = kCALineCapRound
+    
     fileprivate var timer = Timer()
-    fileprivate var progressLabel: UILabel
+    
+    fileprivate var progressLabel: UILabel!
+    fileprivate var innerLabelTextColor: UIColor = UIColor.white
     fileprivate var startingPercentage = 0.0
     fileprivate var currentProgressPercentage: CGFloat = 0.0
-    fileprivate var progressType = ""
+    fileprivate var progressType: ProgressType = .percentage
+    fileprivate var isTimerStarted: Bool = false
     
+    public func setOuterStrokeColor(color : CGColor){ outerStrokeColor = color}
+    public func setInnerStrokeColor(color : CGColor){ innerStrokeColor = color}
+    public func setOuterStrokeLineWidth( width: CGFloat){ outerStrokeLineWidth = width}
+    public func setInnerStrokeLineWidth( width: CGFloat){ innerStrokeLineWidth = width}
+    public func setCurrentProgressPercentage ( percentage: CGFloat){ currentProgressPercentage = percentage}
+    public func setInnerLabelTextColor (textColor: UIColor) { innerLabelTextColor = textColor}
+    public func setLineCap(lineCap: String?) { self.lineCap = lineCap}
+    public func setProgressType (type: ProgressType) { progressType = type}
     
-    
-    
-    required init?(coder aDecoder: NSCoder) {
-        progressLabel = UILabel()
-        super.init(coder: aDecoder)
-        //        createLabel()
-        //        createProgressLayer()
-        //        print(self.bounds)
+    override func draw(_ rect: CGRect) {
+        
+        createLabel(innerLabelTextColor)
+        createProgressLayer(outerStrokeColor, strokeColor2: innerStrokeColor, lineWidth: outerStrokeLineWidth, lineWidth2: outerStrokeLineWidth, lineCap: lineCap)
+//        animateProgressView(currentProgressPercentage, progressType: progressType)
     }
     
+//    required init?(coder aDecoder: NSCoder) {
+//        super.init(coder: aDecoder)
+//        
+//        createLabel(innerLabelTextColor)
+////        createProgressLayer(outerStrokeColor, strokeColor2: innerStrokeColor, lineWidth: outerStrokeLineWidth, lineWidth2: outerStrokeLineWidth, lineCap: lineCap)
+//    }
     
     
-    override init(frame: CGRect) {
-        progressLabel = UILabel()
-        super.init(frame: frame)
-        //        createLabel()
-    }
     
     func createLabel(_ textColor : UIColor) {
+        progressLabel = UILabel()
         progressLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: frame.width, height: 60.0))
         progressLabel.textColor = textColor
         progressLabel.textAlignment = .center
@@ -50,7 +74,7 @@ class ProgressView: UIView, CAAnimationDelegate {
         addConstraint(NSLayoutConstraint(item: progressLabel, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: 0.0))
     }
     
-    func createProgressLayer(_ strokeColor : CGColor, strokeColor2 : CGColor, lineWidth : CGFloat, lineWidth2 : CGFloat, lineCap : String) {
+    func createProgressLayer(_ strokeColor : CGColor, strokeColor2 : CGColor, lineWidth : CGFloat, lineWidth2 : CGFloat, lineCap : String?) {
         
         let startAngle = CGFloat(M_PI + M_PI_2)
         let endAngle = CGFloat(M_PI * 3 + M_PI_2)
@@ -65,7 +89,7 @@ class ProgressView: UIView, CAAnimationDelegate {
         progressLayer.lineWidth = lineWidth
         progressLayer.strokeStart = 0.0
         progressLayer.strokeEnd = 0.0
-        progressLayer.lineCap = lineCap
+        progressLayer.lineCap = lineCap ?? ""
         
         progressLayerWhite.path = UIBezierPath(arcCenter: centerPoint, radius: radius, startAngle: startAngle,endAngle:endAngle, clockwise: true).cgPath
         progressLayerWhite.fillColor = UIColor.clear.cgColor
@@ -98,7 +122,7 @@ class ProgressView: UIView, CAAnimationDelegate {
         progressLabel.text = "Load content"
     }
     
-    func animateProgressView(_ currentProgressPercentage : CGFloat, progressType: String) {
+    public func animateProgressView(_ currentProgressPercentage : CGFloat, progressType: ProgressType) {
         self.currentProgressPercentage = currentProgressPercentage
         self.progressType = progressType
         
@@ -117,41 +141,72 @@ class ProgressView: UIView, CAAnimationDelegate {
         
     }
     
-    //    func backgroundThread(delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
-    //        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INITIATED.rawValue), 0)) {
-    //            if(background != nil){ background!(); }
-    //
-    //            let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC)))
-    //            dispatch_after(popTime, dispatch_get_main_queue()) {
-    //                if(completion != nil){ completion!(); }
-    //            }
-    //        }
-    //    }
-    
-     func animationDidStart(_ anim: CAAnimation) {
+    public func starTimer() {
+        isTimerStarted = true
+//        self.progressType = progressType
         
+        progressLayer.strokeStart = currentProgressPercentage
+        
+        let animation = CABasicAnimation(keyPath: "strokeEnd")
+        print("progress \(currentProgressPercentage)")
+        animation.fromValue = CGFloat(currentProgressPercentage / 100)
+        animation.toValue = CGFloat(0.0)
+        animation.duration = Double(currentProgressPercentage)
+        animation.delegate = self
+        animation.isRemovedOnCompletion = false
+        animation.isAdditive = true
+        animation.fillMode = kCAFillModeForwards
+        progressLayer.add(animation, forKey: "strokeEnd")
+        
+    }
+
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        
+        if !isTimerStarted {
         startingPercentage = 0.0
         timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ProgressView.updateProgressViewLabelWithProgress(_:)), userInfo: nil, repeats: true)
+        } else {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ProgressView.updateProgressViewLabelWithProgress(_:)), userInfo: nil, repeats: true)
+        }
     }
     
-     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
-
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        
         timer.invalidate()
-        if progressType == "percentage" {
-            progressLabel.text = NSString(format: "%.0f %@", currentProgressPercentage , "%") as String
+        
+        if ProgressType.percentage == progressType {
+            progressLabel.text = NSString(format: "%.0f%@", currentProgressPercentage , "%") as String
         }else {
             progressLabel.text = String(format: "%g", currentProgressPercentage)
         }
     }
     
     
+    
     func updateProgressViewLabelWithProgress(_ percent: Float) {
-        startingPercentage += (0.01 * 100)
-        if progressType == "percentage" {
-            progressLabel.text = NSString(format: "%.0f %@", startingPercentage , "%") as String
-        }else {
-            progressLabel.text = String(format: "%g", startingPercentage)
+        
+        if !isTimerStarted {
+            startingPercentage += (0.01 * 100)
+            if ProgressType.percentage == progressType {
+                progressLabel.text = NSString(format: "%.0f%@", startingPercentage , "%") as String
+            }else {
+                progressLabel.text = String(format: "%g", startingPercentage)
+            }
+        } else {
+//            starTimer()
+            if currentProgressPercentage != 0 {
+                timer.invalidate()
+                currentProgressPercentage -= 1
+                progressLabel.text = String(format: "%g", currentProgressPercentage)
+            } else {
+                currentProgressPercentage = 60
+                animateProgressView(currentProgressPercentage, progressType: .timer)
+//                starTimer()
+                timer.fire()
+            }
         }
+       
         
     }
     

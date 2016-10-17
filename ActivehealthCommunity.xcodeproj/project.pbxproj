@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		07E79BEB51A0F3FB1CA8422A /* Pods_ActivehealthCommunity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6C1390CEFD364A8B1707B9F /* Pods_ActivehealthCommunity.framework */; };
+		220859911DB207B900213B29 /* HttpRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220859901DB207B800213B29 /* HttpRequests.swift */; };
+		220859931DB208C400213B29 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220859921DB208C400213B29 /* Constants.swift */; };
+		22F0F39F1DAE553A008DCD98 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F0F39E1DAE553A008DCD98 /* ForgotPasswordViewController.swift */; };
+		22F0F3A11DAE5552008DCD98 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F0F3A01DAE5552008DCD98 /* SignUpViewController.swift */; };
 		B7347B511D6ABD3A00250B26 /* AhcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7347B4F1D6ABD3A00250B26 /* AhcCell.swift */; };
 		B7347B521D6ABD3A00250B26 /* AhcCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7347B501D6ABD3A00250B26 /* AhcCell.xib */; };
 		B7347B671D6C24F000250B26 /* AhcTeamDescriptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B7347B651D6C24F000250B26 /* AhcTeamDescriptionCell.xib */; };
@@ -111,6 +115,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220859901DB207B800213B29 /* HttpRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpRequests.swift; sourceTree = "<group>"; };
+		220859921DB208C400213B29 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		22F0F39E1DAE553A008DCD98 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		22F0F3A01DAE5552008DCD98 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		27D713FDCF563D6023148027 /* Pods-ActivehealthCommunity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActivehealthCommunity.release.xcconfig"; path = "Pods/Target Support Files/Pods-ActivehealthCommunity/Pods-ActivehealthCommunity.release.xcconfig"; sourceTree = "<group>"; };
 		A2C8487571AE4E85AC952336 /* Pods-ActivehealthCommunity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ActivehealthCommunity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ActivehealthCommunity/Pods-ActivehealthCommunity.debug.xcconfig"; sourceTree = "<group>"; };
 		A6C1390CEFD364A8B1707B9F /* Pods_ActivehealthCommunity.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ActivehealthCommunity.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,6 +238,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		22F0F39D1DAE54AA008DCD98 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B7998F901D46FB4900064B8F /* ViewController.swift */,
+				22F0F39E1DAE553A008DCD98 /* ForgotPasswordViewController.swift */,
+				22F0F3A01DAE5552008DCD98 /* SignUpViewController.swift */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		B7347B4B1D6ABBAB00250B26 /* Team/Coaches/MentorsXib */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,6 +422,8 @@
 				B7DB72261D545F6F00A4D3CF /* DismissAnimator.swift */,
 				B7DB72271D545F6F00A4D3CF /* Interactor.swift */,
 				B7347B751D6D14A900250B26 /* LabelWithInsets.swift */,
+				220859901DB207B800213B29 /* HttpRequests.swift */,
+				220859921DB208C400213B29 /* Constants.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -411,6 +431,7 @@
 		B7998FA61D47430C00064B8F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				22F0F39D1DAE54AA008DCD98 /* Login */,
 				B7A4D7EF1D77E8FD00816D13 /* Profile */,
 				B7D511E11D6D914900219D6E /* My Inbox */,
 				B7D511DE1D6D8E1500219D6E /* MyReward */,
@@ -420,8 +441,6 @@
 				B7DB720B1D51B4DD00A4D3CF /* My Community */,
 				B7DB720A1D51B4CB00A4D3CF /* Home */,
 				B7DB71E41D48829C00A4D3CF /* NavigationDrawer */,
-				B7998F901D46FB4900064B8F /* ViewController.swift */,
-				B7998FA71D47435000064B8F /* MainViewController.swift */,
 				B7998FA91D47473D00064B8F /* MainNavigationController.swift */,
 			);
 			name = Controllers;
@@ -635,6 +654,7 @@
 				B7DB71FE1D4F073300A4D3CF /* AhcPointsViewController.swift */,
 				B7DB72011D4F0A3D00A4D3CF /* MyPlanProgressViewController.swift */,
 				B7DB72061D50654B00A4D3CF /* MyUpcomingRaceViewController.swift */,
+				B7998FA71D47435000064B8F /* MainViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -834,7 +854,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		E3CC3037470A7D3AAE9707FA /* [CP] Copy Pods Resources */ = {
@@ -875,6 +895,7 @@
 				B7D511C81D6D675D00219D6E /* GearViewController.swift in Sources */,
 				B7D511AC1D6D417500219D6E /* MyRacePrepPlanViewController.swift in Sources */,
 				B7F9F6601D597D8100E04AED /* ClassesCell.swift in Sources */,
+				22F0F39F1DAE553A008DCD98 /* ForgotPasswordViewController.swift in Sources */,
 				B7A4D7ED1D77E82300816D13 /* HeaderView.swift in Sources */,
 				B7DB72131D51B55800A4D3CF /* FeaturedStoryTabItemViewController.swift in Sources */,
 				B7A4D80F1D7FB08C00816D13 /* UpcomingRacesViewController.swift in Sources */,
@@ -891,7 +912,9 @@
 				B7998FA51D47292800064B8F /* Extensions.swift in Sources */,
 				B76EE4731DA7B7D00043B1C0 /* MentorSessionTabItemViewController.swift in Sources */,
 				B7DB72281D545F6F00A4D3CF /* DismissAnimator.swift in Sources */,
+				22F0F3A11DAE5552008DCD98 /* SignUpViewController.swift in Sources */,
 				B7998FAE1D4844F700064B8F /* MenuViewController.swift in Sources */,
+				220859931DB208C400213B29 /* Constants.swift in Sources */,
 				B7347B6B1D6C25EA00250B26 /* AhcTeamLeaderCell.swift in Sources */,
 				B7D511A91D6D3B2900219D6E /* MentorsViewController.swift in Sources */,
 				B7A4D8021D7FA11500816D13 /* MyPreviousRacesViewController.swift in Sources */,
@@ -908,6 +931,7 @@
 				B7D511D91D6D826B00219D6E /* StatusCell.swift in Sources */,
 				B7D511AE1D6D429C00219D6E /* RacePrepPlanCell.swift in Sources */,
 				B7998FB21D48467800064B8F /* MenuCell.swift in Sources */,
+				220859911DB207B900213B29 /* HttpRequests.swift in Sources */,
 				B7347B881D6D278300250B26 /* ProfileDetails.swift in Sources */,
 				B7A4D7F41D77F31400816D13 /* UserProfileDetailsViewController.swift in Sources */,
 				B7D511B51D6D551600219D6E /* RacePlanViewController.swift in Sources */,
@@ -1055,6 +1079,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWM4935JJ7;
 				INFOPLIST_FILE = ActivehealthCommunity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;
@@ -1072,6 +1097,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = LWM4935JJ7;
 				INFOPLIST_FILE = ActivehealthCommunity/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Activehealth;

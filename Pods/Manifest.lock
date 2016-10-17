@@ -1,34 +1,34 @@
 PODS:
-  - Eureka (1.7.0)
+  - Alamofire (4.0.1)
+  - Eureka (2.0.0-beta.1)
+  - IBAnimatable (3.0)
   - SideMenuController (0.2.0)
   - SwiftyJSON (2.3.2)
 
 DEPENDENCIES:
-  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `Swift3`)
+  - Alamofire (~> 4.0)
+  - Eureka (~> 2.0.0-beta.1)
+  - IBAnimatable
   - SideMenuController (~> 0.2.0)
   - SwiftyJSON (from `https://github.com/BaiduHiDeviOS/SwiftyJSON.git`, branch `swift3`)
 
 EXTERNAL SOURCES:
-  Eureka:
-    :branch: Swift3
-    :git: https://github.com/xmartlabs/Eureka.git
   SwiftyJSON:
     :branch: swift3
     :git: https://github.com/BaiduHiDeviOS/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-  Eureka:
-    :commit: c2b0b03a1e33180af9c5ff30542b516aa495d24b
-    :git: https://github.com/xmartlabs/Eureka.git
   SwiftyJSON:
     :commit: de5dc3b1b421805769590d331178551bbb0e5733
     :git: https://github.com/BaiduHiDeviOS/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Eureka: d014adf16406745e1a78d5790ea37ed130a0a8e5
+  IBAnimatable: 5ac8e4c9f879e1840041362e41f7728bbbf16b35
   SideMenuController: fe6ce032847d4021ac5ead7ee1b05364df5739e7
   SwiftyJSON: 6118fb49d7519c4d31a0c1f3d5af936e9047b556
 
-PODFILE CHECKSUM: a7805c2d53c090e3f4cef1045cb891a874a64f20
+PODFILE CHECKSUM: 8d296e97a18553daa85464f44957586051abcdce
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.0.1

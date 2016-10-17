@@ -11,6 +11,7 @@ import UIKit
 class AhcTeamDescriptionCell: UITableViewCell {
 
     
+    @IBOutlet weak var lblTeamCaptain: UILabel!
     @IBOutlet var lblTeamCreated: UILabel!
     @IBOutlet var lblMembers: UILabel!
     @IBOutlet var lblTeamDescriptions: UILabel!

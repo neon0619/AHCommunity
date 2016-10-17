@@ -14,8 +14,6 @@ protocol MainViewControllerDelegate {
     @objc optional func collapseSidePanels()
 }
 
-
-
 class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPageViewControllerDataSource, UIPopoverPresentationControllerDelegate, UIPopoverControllerDelegate {
     
     var delegate: MainViewControllerDelegate?
@@ -38,17 +36,17 @@ class MainViewController: UIViewController, UIPageViewControllerDelegate, UIPage
     
     
     override func viewDidLoad() {
-               
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let page1: UIViewController! = storyboard.instantiateViewController(withIdentifier: "ahcPointsController")
-        let page2: UIViewController! = storyboard.instantiateViewController(withIdentifier: "myPlanProgressController")
+                let page1: UIViewController! = storyboard.instantiateViewController(withIdentifier: "myPlanProgressController")
+        let page2: UIViewController! = storyboard.instantiateViewController(withIdentifier: "ahcPointsController")
         let page3: UIViewController! = storyboard.instantiateViewController(withIdentifier: "myUpcomingRaceController")
         let page4: UIViewController! = storyboard.instantiateViewController(withIdentifier: "communityPollsController")
         pages.append(page1)
         pages.append(page2)
         pages.append(page3)
         pages.append(page4)
+        
         
         pageContainer = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         pageContainer.delegate = self
