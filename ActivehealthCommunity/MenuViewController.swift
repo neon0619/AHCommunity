@@ -97,7 +97,7 @@ class MenuViewController: UIViewController, UITableViewDelegate, UITableViewData
         headerCell.userImage.addGestureRecognizer(tap)
         headerCell.userImage.isUserInteractionEnabled = true
         headerCell.userName.textColor = UIColor.white
-        headerCell.userName.text = "Jade Lapuz"
+        headerCell.userName.text = "Fucking t0tep"
         
         return headerCell
     }
